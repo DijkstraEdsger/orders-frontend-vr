@@ -1,7 +1,7 @@
 import * as actionProducts from "../actions/products";
 
 const initialState = {
-  products: [],
+  products: null,
 };
 
 const setProducts = (state, action) => {
@@ -12,10 +12,6 @@ const setProducts = (state, action) => {
 };
 
 const reducer = (state = initialState, action) => {
-  action.products = [
-    { name: "Cafe", price: 2, image: "imageCafe" },
-    { name: "Pollo", price: 5, image: "imagePollo" },
-  ];
   switch (action.type) {
     case actionProducts.SET_PRODUCTS:
       return setProducts(state, action);

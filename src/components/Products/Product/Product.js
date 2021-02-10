@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { apiUrl } from "../../../config-base";
+import classes from "./Product.module.css";
 
 class Product extends Component {
   render() {
     return (
-      <div>
-        <img src={this.props.image} />
+      <div className={classes.Product}>
+        <img src={apiUrl + this.props.image} />
         <h4>{this.props.name}</h4>
         <p>{this.props.price}</p>
       </div>

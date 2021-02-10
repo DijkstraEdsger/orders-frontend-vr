@@ -8,6 +8,7 @@ class ProductsList extends Component {
     this.props.onInitProducts();
   }
   render() {
+      console.log('[ProductsList] products', this.props.products);
     return (
       <div>
         <p>ProductsList</p>
@@ -25,7 +26,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onInitProducts: () => dispatch({type: actionProduct.SET_PRODUCTS}),
+    // onInitProducts: () => dispatch({type: actionProduct.SET_PRODUCTS}),
+    onInitProducts: () => actionProduct.initProducts(dispatch)
   };
 };
 
