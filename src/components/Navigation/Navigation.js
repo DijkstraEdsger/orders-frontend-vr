@@ -6,11 +6,24 @@ import Backdrop from "./Backdrop/Backdrop";
 class Navigation extends Component {
   state = {
     showSideDrawer: false,
+    navItems: [
+      { name: "Categories", link: "/categories" },
+      { name: "Other", link: "/other" },
+      {
+        name: "Foobar",
+        link: "",
+        childrenItems: [
+          { name: "Foo", link: "/foo" },
+          { name: "Bar", link: "/bar" },
+        ],
+      },
+    ],
   };
 
   sideDrawerTogglerHandler = () => {
     this.setState((prevState) => {
       return {
+        ...this.state,
         showSideDrawer: !prevState.showSideDrawer,
       };
     });
@@ -18,6 +31,7 @@ class Navigation extends Component {
 
   sideDrawerClose = () => {
     this.setState({
+      ...this.state,
       showSideDrawer: false,
     });
   };
@@ -33,7 +47,10 @@ class Navigation extends Component {
           show={this.state.showSideDrawer}
         />
         <Toolbar clickedToggle={this.sideDrawerTogglerHandler} />
-        <SideDrawer open={this.state.showSideDrawer} />
+        <SideDrawer
+          open={this.state.showSideDrawer}
+          navItems={this.state.navItems}
+        />
       </div>
     );
   }

@@ -10,13 +10,14 @@ const sideDrawer = (props) => {
   }
   return (
     <div className={classesSideDrawer.join(" ")}>
-      <NavItems />
+      <NavItems items={props.navItems} />
     </div>
   );
 };
 
 sideDrawer.propTypes = {
   open: PropTypes.bool,
+  navItems: PropTypes.array,
 };
 
 export default sideDrawer;
