@@ -4,6 +4,7 @@ import ProductsList from "./containers/ProductsList/ProductsList";
 import Layout from "./components/Layout/Layout";
 import { Switch, Route } from "react-router-dom";
 import ProductDetails from './containers/ProductDetails/ProductDetails';
+import Home from './components/Home/Home';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Switch>
           <Route path="/products" exact component={ProductsList} />
           <Route path="/products/:id" exact component={ProductDetails}/>
+          <Route path="/" exact component={Home} />
         </Switch>
       </Layout>
     </div>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionSelectedProduct from "../../store/actions/selectedProduct";
 import { apiUrl } from "../../config-base";
+import classes from './ProductDetails.module.css';
 
 class ProductDetails extends Component {
   componentDidMount() {
@@ -13,9 +14,9 @@ class ProductDetails extends Component {
     let product = <p>Loading...</p>;
     if (this.props.product) {
       product = (
-        <div>
-          <img src={apiUrl + this.props.product.image} />
-          <h4>{this.props.product.name}</h4>
+        <div className={classes.ProductDetails}>
+          <h3>{this.props.product.name}</h3>
+          <img src={apiUrl + this.props.product.image} />          
           <p>{this.props.product.price}</p>
           <p>{this.props.product.description}</p>
         </div>
