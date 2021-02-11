@@ -30,7 +30,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // onInitProducts: () => dispatch({type: actionProduct.SET_PRODUCTS}),
     onInitProducts: () => actionProduct.initProducts(dispatch),
   };
 };
