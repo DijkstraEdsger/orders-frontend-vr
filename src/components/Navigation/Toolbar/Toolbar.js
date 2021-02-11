@@ -2,16 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import NavItems from "../NavItems/NavItems";
 import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
-import classes from './Toolbar.module.css';
+import classes from "./Toolbar.module.css";
 
 const toolbar = (props) => {
   return (
     <header className={classes.Toolbar}>
-      <DrawerToggle clicked={props.clickedToggle} />
-      <p>Logo</p>
-      <nav>
-        {/* <NavItems /> */}
-      </nav>
+      <div className={classes.ToolbarLeft}>
+        <DrawerToggle clicked={props.clickedToggle} />
+        <p>MyShop</p>
+      </div>
+      <nav>{/* <NavItems /> */}</nav>
     </header>
   );
 };

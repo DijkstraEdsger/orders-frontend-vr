@@ -10,8 +10,7 @@ class ProductsList extends Component {
   render() {
     console.log("[ProductsList] products", this.props.products);
     return (
-      <div>
-        <p>ProductsList</p>
+      <div style={{ marginTop: "48px" }}>
         <Products
           products={this.props.products}
           url={this.props.match.url}
