@@ -8,11 +8,15 @@ class ProductsList extends Component {
     this.props.onInitProducts();
   }
   render() {
-      console.log('[ProductsList] products', this.props.products);
+    console.log("[ProductsList] products", this.props.products);
     return (
       <div>
         <p>ProductsList</p>
-        <Products products={this.props.products} />
+        <Products
+          products={this.props.products}
+          url={this.props.match.url}
+          history={this.props.history}
+        />
       </div>
     );
   }
@@ -27,7 +31,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     // onInitProducts: () => dispatch({type: actionProduct.SET_PRODUCTS}),
-    onInitProducts: () => actionProduct.initProducts(dispatch)
+    onInitProducts: () => actionProduct.initProducts(dispatch),
   };
 };
 

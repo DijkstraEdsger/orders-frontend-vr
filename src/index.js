@@ -6,14 +6,17 @@ import reportWebVitals from "./reportWebVitals";
 import productsReducer from "./store/reducers/products";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
 const store = createStore(productsReducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
