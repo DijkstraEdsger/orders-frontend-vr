@@ -6,7 +6,26 @@ const navItems = (props) => {
   return (
     <ul className={classes.NavItems}>
       <NavItem>Categories</NavItem>
-      <NavItem>Other</NavItem>
+      <NavItem>Other 1</NavItem>
+      <NavItem>Other 2</NavItem>
+      <NavItem>Other 3</NavItem>
+      <NavItem>Other 4</NavItem>
+      <NavItem>Other 1</NavItem>
+      <NavItem>Other 2</NavItem>
+      <NavItem>Other 3</NavItem>
+      <NavItem>Other 4</NavItem>
+      <NavItem>Other 1</NavItem>
+      <NavItem>Other 2</NavItem>
+      <NavItem>Other 3</NavItem>
+      <NavItem>Other 4</NavItem>
+      <NavItem>Other 1</NavItem>
+      <NavItem>Other 2</NavItem>
+      <NavItem>Other 3</NavItem>
+      <NavItem>Other 4</NavItem>
+      <NavItem>Other 1</NavItem>
+      <NavItem>Other 2</NavItem>
+      <NavItem>Other 3</NavItem>
+      <NavItem>Other 99</NavItem>
     </ul>
   );
 };

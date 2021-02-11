@@ -25,9 +25,13 @@ class Navigation extends Component {
   render() {
     return (
       <div>
-        {this.state.showSideDrawer ? (
+        {/* {this.state.showSideDrawer ? (
           <Backdrop clicked={this.sideDrawerClose} />
-        ) : null}
+        ) : null} */}
+        <Backdrop
+          clicked={this.sideDrawerClose}
+          show={this.state.showSideDrawer}
+        />
         <Toolbar clickedToggle={this.sideDrawerTogglerHandler} />
         <SideDrawer open={this.state.showSideDrawer} />
       </div>
