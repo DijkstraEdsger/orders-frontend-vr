@@ -18,8 +18,22 @@ class Navigation extends Component {
             name: "Bar",
             link: "/bar",
             childrenItems: [
-              { name: "Foo2", link: "/foo2" },
-              { name: "Bar2", link: "/bar2" },
+              {
+                name: "Foo2",
+                link: "/foo2",
+                childrenItems: [
+                  { name: "Foo21", link: "/foo21" },
+                  { name: "Bar21", link: "/bar21" },
+                ],
+              },
+              {
+                name: "Bar2",
+                link: "/bar2",
+                childrenItems: [
+                  { name: "Foo22", link: "/foo22" },
+                  { name: "Bar22", link: "/bar22" },
+                ],
+              },
             ],
           },
         ],

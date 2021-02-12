@@ -2,6 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   padding-bottom: 2px;
+  border-bottom: 5px solid #ccc;
 }
 
 .BackArrow a {
