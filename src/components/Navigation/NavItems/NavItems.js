@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import NavItem from "./NavItem.js/NavItem";
 import classes from "./NavItems.module.css";
 import PropTypes from "prop-types";
+import BackArrow from "../BackArrow/BackArrow";
 
 class NavItems extends Component {
   state = {
@@ -10,7 +11,7 @@ class NavItems extends Component {
   };
 
   setLeftMove = () => {
-    console.log('setLeftMove');
+    console.log("setLeftMove");
     this.setState({
       ...this.state,
       left: true,
@@ -19,8 +20,10 @@ class NavItems extends Component {
 
   render() {
     let classesNavItems = [classes.NavItems];
+    let backArrow = null;
     if (this.props.isChild) {
       classesNavItems = [classes.NavItems, classes.Children];
+      backArrow = <BackArrow>{this.props.parentName}</BackArrow>;
     }
     if (this.props.showAsChild) {
       classesNavItems = [classes.NavItems, classes.ChildrenVisible];
@@ -44,7 +47,12 @@ class NavItems extends Component {
       });
     }
 
-    return <ul className={classesNavItems.join(" ")}>{items}</ul>;
+    return (
+      <ul className={classesNavItems.join(" ")}>
+        {backArrow}
+        {items}
+      </ul>
+    );
   }
 }
 
@@ -52,6 +60,7 @@ NavItems.propTypes = {
   items: PropTypes.array,
   isChild: PropTypes.bool,
   showAsChild: PropTypes.bool,
+  parentName: PropTypes.string
 };
 
 export default NavItems;

@@ -41,7 +41,11 @@ class NavItem extends Component {
           // onClick={this.props.left}
         >
           <div>{this.props.children}</div>
-          <div>{this.props.childrenItems ? <p>--</p> : null}</div>
+          <div>
+            {this.props.childrenItems ? (
+              <i className={[classes.RightArrow, "fa fa-chevron-right"].join(" ")}></i>
+            ) : null}
+          </div>
         </a>
       );
       childrenItems = (
@@ -49,6 +53,7 @@ class NavItem extends Component {
           items={this.props.childrenItems}
           isChild={true}
           showAsChild={this.state.showChildren}
+          parentName={this.props.children}
         />
       );
     }
