@@ -9,6 +9,7 @@ class NavItems extends Component {
   state = {
     showAsChild: this.props.showChildren,
     left: false,
+    hideAsChild: false,
   };
 
   setLeftMove = () => {
@@ -16,22 +17,45 @@ class NavItems extends Component {
     this.setState({
       ...this.state,
       left: true,
+      // right: false
     });
   };
 
+  setHideChildren = () => {
+    console.log("setHideChildren");
+    this.setState({
+      ...this.state,
+      hideAsChild: true,
+      // hideFather: true
+    });
+    console.log('state', this.state);
+  };
+
   render() {
+    console.log('render NavItems');
     let classesNavItems = [classes.NavItems];
     let backArrow = null;
     if (this.props.isChild) {
       classesNavItems = [classes.NavItems, classes.Children];
-      backArrow = <BackArrow>{this.props.grandParentName}</BackArrow>;
+      backArrow = (
+        <BackArrow clicked={this.setHideChildren}>
+          {this.props.grandParentName}
+        </BackArrow>
+      );
     }
     if (this.props.showAsChild) {
       classesNavItems = [classes.NavItems, classes.ChildrenVisible];
     }
+    if (this.state.hideAsChild) {
+      console.log('render NavItems hide');
+      classesNavItems = [classes.NavItems, classes.Children];
+    }
     if (this.state.left) {
       classesNavItems = [classes.NavItems, classes.Left];
     }
+    // if (this.state.right) {
+    //   classesNavItems = [classes.NavItems, classes.Right];
+    // }
     let items = null;
     if (this.props.items) {
       items = this.props.items.map((item) => {
@@ -63,8 +87,9 @@ NavItems.propTypes = {
   items: PropTypes.array,
   isChild: PropTypes.bool,
   showAsChild: PropTypes.bool,
+  hideAsChild: PropTypes.bool,
   parentName: PropTypes.string,
-  grandParentName: PropTypes.string
+  grandParentName: PropTypes.string,
 };
 
 export default NavItems;

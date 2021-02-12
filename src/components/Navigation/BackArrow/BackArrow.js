@@ -32,7 +32,7 @@ class BackArrow extends Component {
       <a
         className={this.props.active ? classes.active : null}
         onClick={this.setShowParent}
-        // onClick={this.props.left}
+        onClick={this.props.clicked}
       >
         <div>
           <i
@@ -50,6 +50,7 @@ BackArrow.propTypes = {
   active: PropTypes.bool,
   link: PropTypes.string,
   left: PropTypes.func,
+  clicked: PropTypes.func
 };
 
 export default BackArrow;

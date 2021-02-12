@@ -14,7 +14,7 @@
   top: 0;
   /* transform: translateX(80vw); */
   width: 80vw;
-  visibility: hidden;
+  visibility: visible;
   left: 80vw;
 }
 
@@ -33,6 +33,10 @@
   left: -100%;
   width: 80vw;
   /* transform: translateX(-100%); */
+}
+
+.Hide {
+  display: none;
 }
 
 @media (min-width: 500px) {
