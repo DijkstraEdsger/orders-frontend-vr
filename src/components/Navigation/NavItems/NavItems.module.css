@@ -6,6 +6,30 @@
   flex-direction: column;
   overflow: auto;
   height: 100%;
+  transition: transform 0.3s ease-out;
+}
+
+.Children {
+  position: fixed;
+  top: 0;
+  transform: translateX(80vw);
+  width: 80vw;
+  visibility: hidden;
+}
+
+.ChildrenVisible {
+  position: fixed;
+  top: 0;
+  /* transform: translateX(0); */
+  width: 80vw;
+  visibility: visible;
+  left: 0;
+}
+
+.Left {
+  position: fixed;
+  top: 0;
+  left: -100%;
 }
 
 @media (min-width: 500px) {

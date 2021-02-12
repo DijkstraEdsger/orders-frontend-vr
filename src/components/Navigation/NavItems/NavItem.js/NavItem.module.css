@@ -1,7 +1,7 @@
 .NavItem {
   box-sizing: border-box;
   width: 100%;
-  padding-bottom: 2px;  
+  padding-bottom: 2px;
 }
 
 .NavItem a {
@@ -19,4 +19,11 @@
 
 .NavItem a.active {
   background-color: #ccc;
+}
+
+.Children {
+  position: fixed;
+  top: 0;
+  transform: translateX(70vw);
+  width: 80vw;
 }

@@ -14,7 +14,14 @@ class Navigation extends Component {
         link: "",
         childrenItems: [
           { name: "Foo", link: "/foo" },
-          { name: "Bar", link: "/bar" },
+          {
+            name: "Bar",
+            link: "/bar",
+            childrenItems: [
+              { name: "Foo2", link: "/foo2" },
+              { name: "Bar2", link: "/bar2" },
+            ],
+          },
         ],
       },
     ],

@@ -10,7 +10,7 @@ const sideDrawer = (props) => {
   }
   return (
     <div className={classesSideDrawer.join(" ")}>
-      <NavItems items={props.navItems} />
+      <NavItems items={props.navItems} isChild={false}/>
     </div>
   );
 };
