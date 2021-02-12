@@ -54,6 +54,7 @@ class NavItem extends Component {
           isChild={true}
           showAsChild={this.state.showChildren}
           parentName={this.props.children}
+          grandParentName={this.props.parent}
         />
       );
     }
@@ -71,6 +72,7 @@ NavItem.propTypes = {
   link: PropTypes.string,
   childrenItems: PropTypes.array,
   left: PropTypes.func,
+  parent: PropTypes.string
 };
 
 export default NavItem;

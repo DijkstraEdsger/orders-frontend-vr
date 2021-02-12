@@ -3,6 +3,7 @@ import NavItem from "./NavItem.js/NavItem";
 import classes from "./NavItems.module.css";
 import PropTypes from "prop-types";
 import BackArrow from "../BackArrow/BackArrow";
+import HeadItem from "../SideDrawer/HeadItem/HeadItem";
 
 class NavItems extends Component {
   state = {
@@ -23,7 +24,7 @@ class NavItems extends Component {
     let backArrow = null;
     if (this.props.isChild) {
       classesNavItems = [classes.NavItems, classes.Children];
-      backArrow = <BackArrow>{this.props.parentName}</BackArrow>;
+      backArrow = <BackArrow>{this.props.grandParentName}</BackArrow>;
     }
     if (this.props.showAsChild) {
       classesNavItems = [classes.NavItems, classes.ChildrenVisible];
@@ -40,6 +41,7 @@ class NavItems extends Component {
             key={item.name}
             childrenItems={item.childrenItems}
             left={this.setLeftMove}
+            parent={this.props.parentName}
           >
             {item.name}
           </NavItem>
@@ -50,6 +52,7 @@ class NavItems extends Component {
     return (
       <ul className={classesNavItems.join(" ")}>
         {backArrow}
+        <HeadItem>{this.props.parentName}</HeadItem>
         {items}
       </ul>
     );
@@ -60,7 +63,8 @@ NavItems.propTypes = {
   items: PropTypes.array,
   isChild: PropTypes.bool,
   showAsChild: PropTypes.bool,
-  parentName: PropTypes.string
+  parentName: PropTypes.string,
+  grandParentName: PropTypes.string
 };
 
 export default NavItems;
