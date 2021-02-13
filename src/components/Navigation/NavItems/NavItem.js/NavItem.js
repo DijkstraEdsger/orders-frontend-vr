@@ -8,17 +8,17 @@ class NavItem extends Component {
     // showChildren: false,
     // hideFather: false
     // refactor
-    move: 80
+    move: null
   };
 
   moveForwardHandler = () => {
     console.log('moveForwardHandler');
-    // this.setState({
-    //   // showChildren: true,
-    //   // hideFather: true
-    //   ...this.state,
-    //   move: -80
-    // });
+    this.setState({
+      // showChildren: true,
+      // hideFather: true
+      // ...this.state,
+      move: -80
+    });
     this.props.move(-80);
   };
 
@@ -59,7 +59,8 @@ class NavItem extends Component {
           // showAsChild={this.state.showChildren}
           parentName={this.props.children}
           grandParentName={this.props.parent}
-          positionX={this.state.move}
+          // positionX={80}
+          steps={this.state.move}
         />
       );
     }

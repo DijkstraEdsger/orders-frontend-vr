@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import NavItem from "./NavItem.js/NavItem";
 import classes from "./NavItems.module.css";
 import PropTypes from "prop-types";
@@ -6,10 +6,10 @@ import BackArrow from "../BackArrow/BackArrow";
 import HeadItem from "../SideDrawer/HeadItem/HeadItem";
 
 class NavItems extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.elementRef = React.createRef();
-  // }
+  constructor(props) {
+    super(props);
+    this.elementRef = React.createRef();
+  }
 
   state = {
     // showAsChild: this.props.showChildren,
@@ -17,27 +17,45 @@ class NavItems extends Component {
     // hideAsChild: false,
     // refactor
     // positionX: this.props.isChild ? "80vw" : this.props.positionX,
-    positionX: this.props.positionX,
+    positionX: 0,
+    steps: 0
     // isChild:
   };
 
-  // componentDidMount() {
-  //   this.elementRef.current.style.left = (this.elementRef.current.style.left + this.state.positionX).toString() + "vw";
-  //   // console.log('this.elementRef.current.style.left', this.elementRef.current.style.left);
-  // }
+  componentDidMount() {
+    // this.setState({
+    //   positionX: this.props.positionX,
+    //   steps: this.props.steps
+    // });
+    if (this.props.isChild) {
+      this.elementRef.current.style.left = "80vw";
+    console.log('componentDidMount left', this.elementRef.current.style.left);
+    } else {
+      this.elementRef.current.style.left = "0vw";
+    }
+    
+  }
 
-  // componentDidUpdate() {
-  //   this.elementRef.current.style.left = (this.elementRef.current.style.left + this.state.positionX).toString() + "vw";
-  //   console.log('this.elementRef.current.style.left', this.elementRef.current.style.left);
-  // }
+  componentDidUpdate() {
+    // this.setState({
+    //   positionX: this.props.positionX + this.props.steps,
+    //   steps: this.props.steps,
+    // });
+    // if (this.state.steps !== this.props.steps) {
+      
+    // }
+    let left = parseInt(this.elementRef.current.style.left) + this.props.steps;
+    this.elementRef.current.style.left = left.toString() + "vw";
+    console.log('this.elementRef.current.style.left', this.elementRef.current.style.left);
+  }
 
   setPositionXHandler = (steps) => {
-    console.log("setPositionXHandler", steps);
-    // let stateCopy = {...this.state};
-    this.setState({
-      positionX: this.state.positionX + steps,
-      // right: false
-    });
+    // this.setState({
+    //   positionX: this.state.positionX + steps,
+    // });
+    let left = parseInt(this.elementRef.current.style.left) + steps;
+    this.elementRef.current.style.left = left.toString() + "vw";
+    console.log('left style setPositionXHandler', left);
   };
 
   // setHideChildren = () => {
@@ -51,6 +69,7 @@ class NavItems extends Component {
   // };
 
   render() {
+    console.log('render');
     let backArrow = null;
 
     if (this.props.isChild) {
@@ -88,8 +107,8 @@ class NavItems extends Component {
     return (
       <ul
         className={classes.NavItems}
-        style={{ left: this.state.positionX.toString() + "vw" }}
-        // ref={this.elementRef}
+        // style={{ left: this.state.positionX.toString() + "vw" }}
+        ref={this.elementRef}
       >
         {backArrow}
         <HeadItem>{this.props.parentName}</HeadItem>
