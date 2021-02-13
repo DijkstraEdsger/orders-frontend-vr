@@ -22,6 +22,17 @@ class NavItem extends Component {
     this.props.move(-80);
   };
 
+  moveBackwardHandler = () => {
+    console.log('moveBackwardHandler');
+    // this.setState({
+    //   // showChildren: true,
+    //   // hideFather: true
+    //   // ...this.state,
+    //   move: 80
+    // });
+    this.props.move(80);
+  };
+
   render() {
     if (this.state.showChildren) {
       console.log("render NavItem");
@@ -61,6 +72,7 @@ class NavItem extends Component {
           grandParentName={this.props.parent}
           // positionX={80}
           steps={this.state.move}
+          backward={this.moveBackwardHandler}
         />
       );
     }

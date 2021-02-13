@@ -58,6 +58,15 @@ class NavItems extends Component {
     console.log('left style setPositionXHandler', left);
   };
 
+  backwardHandler = (steps) => {
+    // this.setState({
+    //   positionX: this.state.positionX + steps,
+    // });
+    let left = parseInt(this.elementRef.current.style.left) + steps;
+    this.elementRef.current.style.left = left.toString() + "vw";
+    this.props.backward();
+  };
+
   // setHideChildren = () => {
   //   console.log("setHideChildren");
   //   this.setState({
@@ -74,7 +83,7 @@ class NavItems extends Component {
 
     if (this.props.isChild) {
       backArrow = (
-        <BackArrow clicked={this.setHideChildren}>
+        <BackArrow clicked={() => this.backwardHandler(80)}>
           {this.props.grandParentName}
         </BackArrow>
       );
