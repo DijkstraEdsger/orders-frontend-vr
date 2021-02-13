@@ -6,38 +6,28 @@
   flex-direction: column;
   overflow: auto;
   height: 100%;
+  position: fixed;
+  top: 0;
+  width: 80vw;
   transition: left 0.2s ease-in-out;
 }
 
-.Children {
-  position: fixed;
-  top: 0;
-  /* transform: translateX(80vw); */
-  width: 80vw;
-  visibility: visible;
-  left: 80vw;
+
+
+
+
+.Left {
+  left: -100%;
 }
 
-.ChildrenVisible {
-  position: fixed;
-  top: 0;
-  /* transform: translateX(0); */
-  width: 80vw;
-  visibility: visible;
+.Center {
   left: 0;
 }
 
-.Left {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 80vw;
-  /* transform: translateX(-100%); */
+.Right {
+  left: 80vw;
 }
 
-.Hide {
-  display: none;
-}
 
 @media (min-width: 500px) {
   .NavItems {

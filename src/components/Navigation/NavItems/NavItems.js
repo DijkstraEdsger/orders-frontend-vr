@@ -6,56 +6,68 @@ import BackArrow from "../BackArrow/BackArrow";
 import HeadItem from "../SideDrawer/HeadItem/HeadItem";
 
 class NavItems extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.elementRef = React.createRef();
+  // }
+
   state = {
-    showAsChild: this.props.showChildren,
-    left: false,
-    hideAsChild: false,
+    // showAsChild: this.props.showChildren,
+    // left: false,
+    // hideAsChild: false,
+    // refactor
+    // positionX: this.props.isChild ? "80vw" : this.props.positionX,
+    positionX: this.props.positionX,
+    // isChild:
   };
 
-  setLeftMove = () => {
-    console.log("setLeftMove");
+  // componentDidMount() {
+  //   this.elementRef.current.style.left = (this.elementRef.current.style.left + this.state.positionX).toString() + "vw";
+  //   // console.log('this.elementRef.current.style.left', this.elementRef.current.style.left);
+  // }
+
+  // componentDidUpdate() {
+  //   this.elementRef.current.style.left = (this.elementRef.current.style.left + this.state.positionX).toString() + "vw";
+  //   console.log('this.elementRef.current.style.left', this.elementRef.current.style.left);
+  // }
+
+  setPositionXHandler = (steps) => {
+    console.log("setPositionXHandler", steps);
+    // let stateCopy = {...this.state};
     this.setState({
-      ...this.state,
-      left: true,
+      positionX: this.state.positionX + steps,
       // right: false
     });
   };
 
-  setHideChildren = () => {
-    console.log("setHideChildren");
-    this.setState({
-      ...this.state,
-      hideAsChild: true,
-      // hideFather: true
-    });
-    console.log('state', this.state);
-  };
+  // setHideChildren = () => {
+  //   console.log("setHideChildren");
+  //   this.setState({
+  //     ...this.state,
+  //     hideAsChild: true,
+  //     // hideFather: true
+  //   });
+  //   console.log('state', this.state);
+  // };
 
   render() {
-    console.log('render NavItems');
-    let classesNavItems = [classes.NavItems];
     let backArrow = null;
+
     if (this.props.isChild) {
-      classesNavItems = [classes.NavItems, classes.Children];
       backArrow = (
         <BackArrow clicked={this.setHideChildren}>
           {this.props.grandParentName}
         </BackArrow>
       );
     }
-    if (this.props.showAsChild) {
-      classesNavItems = [classes.NavItems, classes.ChildrenVisible];
-    }
-    if (this.state.hideAsChild) {
-      console.log('render NavItems hide');
-      classesNavItems = [classes.NavItems, classes.Children];
-    }
-    if (this.state.left) {
-      classesNavItems = [classes.NavItems, classes.Left];
-    }
-    // if (this.state.right) {
-    //   classesNavItems = [classes.NavItems, classes.Right];
+    // if (this.state.positionX === "center") {
+    //   classesNavItems = [classes.NavItems, classes.Center];
     // }
+
+    // if (this.state.positionX === "left") {
+    //   classesNavItems = [classes.NavItems, classes.Left];
+    // }
+
     let items = null;
     if (this.props.items) {
       items = this.props.items.map((item) => {
@@ -64,7 +76,7 @@ class NavItems extends Component {
             link={item.link}
             key={item.name}
             childrenItems={item.childrenItems}
-            left={this.setLeftMove}
+            move={(steps) => this.setPositionXHandler(steps)}
             parent={this.props.parentName}
           >
             {item.name}
@@ -74,7 +86,11 @@ class NavItems extends Component {
     }
 
     return (
-      <ul className={classesNavItems.join(" ")}>
+      <ul
+        className={classes.NavItems}
+        style={{ left: this.state.positionX.toString() + "vw" }}
+        // ref={this.elementRef}
+      >
         {backArrow}
         <HeadItem>{this.props.parentName}</HeadItem>
         {items}

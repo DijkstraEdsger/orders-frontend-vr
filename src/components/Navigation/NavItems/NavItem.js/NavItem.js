@@ -5,17 +5,21 @@ import NavItems from "../NavItems";
 
 class NavItem extends Component {
   state = {
-    showChildren: false,
+    // showChildren: false,
     // hideFather: false
+    // refactor
+    move: 80
   };
 
-  setShowChildren = () => {
-    console.log("setShowChildren");
-    this.setState({
-      showChildren: true,
-      // hideFather: true
-    });
-    this.props.left();
+  moveForwardHandler = () => {
+    console.log('moveForwardHandler');
+    // this.setState({
+    //   // showChildren: true,
+    //   // hideFather: true
+    //   ...this.state,
+    //   move: -80
+    // });
+    this.props.move(-80);
   };
 
   render() {
@@ -37,7 +41,7 @@ class NavItem extends Component {
       item = (
         <a
           className={this.props.active ? classes.active : null}
-          onClick={this.setShowChildren}
+          onClick={this.moveForwardHandler}
           // onClick={this.props.left}
         >
           <div>{this.props.children}</div>
@@ -52,9 +56,10 @@ class NavItem extends Component {
         <NavItems
           items={this.props.childrenItems}
           isChild={true}
-          showAsChild={this.state.showChildren}
+          // showAsChild={this.state.showChildren}
           parentName={this.props.children}
           grandParentName={this.props.parent}
+          positionX={this.state.move}
         />
       );
     }
