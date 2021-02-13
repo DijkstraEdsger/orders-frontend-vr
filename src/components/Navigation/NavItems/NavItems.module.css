@@ -12,23 +12,6 @@
   transition: left 0.2s ease-in-out;
 }
 
-
-
-
-
-/* .Left {
-  left: -100%;
-}
-
-.Center {
-  left: 0;
-}
-
-.Right {
-  left: 80vw;
-} */
-
-
 @media (min-width: 500px) {
   .NavItems {
     flex-direction: row;

@@ -12,73 +12,35 @@ class NavItems extends Component {
   }
 
   state = {
-    // showAsChild: this.props.showChildren,
-    // left: false,
-    // hideAsChild: false,
-    // refactor
-    // positionX: this.props.isChild ? "80vw" : this.props.positionX,
     positionX: 0,
-    steps: 0
-    // isChild:
+    steps: 0,
   };
 
   componentDidMount() {
-    // this.setState({
-    //   positionX: this.props.positionX,
-    //   steps: this.props.steps
-    // });
     if (this.props.isChild) {
       this.elementRef.current.style.left = "80vw";
-    console.log('componentDidMount left', this.elementRef.current.style.left);
     } else {
       this.elementRef.current.style.left = "0vw";
     }
-    
   }
 
   componentDidUpdate() {
-    // this.setState({
-    //   positionX: this.props.positionX + this.props.steps,
-    //   steps: this.props.steps,
-    // });
-    // if (this.state.steps !== this.props.steps) {
-      
-    // }
     let left = parseInt(this.elementRef.current.style.left) + this.props.steps;
     this.elementRef.current.style.left = left.toString() + "vw";
-    console.log('this.elementRef.current.style.left', this.elementRef.current.style.left);
   }
 
   setPositionXHandler = (steps) => {
-    // this.setState({
-    //   positionX: this.state.positionX + steps,
-    // });
     let left = parseInt(this.elementRef.current.style.left) + steps;
     this.elementRef.current.style.left = left.toString() + "vw";
-    console.log('left style setPositionXHandler', left);
   };
 
   backwardHandler = (steps) => {
-    // this.setState({
-    //   positionX: this.state.positionX + steps,
-    // });
     let left = parseInt(this.elementRef.current.style.left) + steps;
     this.elementRef.current.style.left = left.toString() + "vw";
     this.props.backward();
   };
 
-  // setHideChildren = () => {
-  //   console.log("setHideChildren");
-  //   this.setState({
-  //     ...this.state,
-  //     hideAsChild: true,
-  //     // hideFather: true
-  //   });
-  //   console.log('state', this.state);
-  // };
-
   render() {
-    console.log('render');
     let backArrow = null;
 
     if (this.props.isChild) {
@@ -88,13 +50,6 @@ class NavItems extends Component {
         </BackArrow>
       );
     }
-    // if (this.state.positionX === "center") {
-    //   classesNavItems = [classes.NavItems, classes.Center];
-    // }
-
-    // if (this.state.positionX === "left") {
-    //   classesNavItems = [classes.NavItems, classes.Left];
-    // }
 
     let items = null;
     if (this.props.items) {
@@ -114,11 +69,7 @@ class NavItems extends Component {
     }
 
     return (
-      <ul
-        className={classes.NavItems}
-        // style={{ left: this.state.positionX.toString() + "vw" }}
-        ref={this.elementRef}
-      >
+      <ul className={classes.NavItems} ref={this.elementRef}>
         {backArrow}
         <HeadItem>{this.props.parentName}</HeadItem>
         {items}
