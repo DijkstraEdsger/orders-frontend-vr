@@ -16,7 +16,7 @@ class SideDrawer extends Component {
   //   ];
   // }
   state = {
-    menus: ["0vw", "80vw", "80vw"],
+    menus: ["0vw", "80vw", "80vw", "80vw"],
   };
 
   slideForwardHandler = (parent, child) => {
@@ -61,7 +61,7 @@ class SideDrawer extends Component {
           </NavItem>
           <NavItem
             key={"Computers"}
-            child={2}
+            child={3}
             parent={0}
             clicked={(parent, child) => this.slideForwardHandler(parent, child)}
           >
@@ -70,12 +70,18 @@ class SideDrawer extends Component {
         </NavItems>
         <NavItems parent={0} posX={this.state.menus[1]}>
           <BackArrow parent={0} current={1} clicked={(parent, child) => this.slideBackwardHandler(parent, child)}>{"Main menu"}</BackArrow>
-          <NavItem link={"/Ferrari"} key={"Ferrari"} child={-1} parent={1}>
+          <NavItem link={"/Ferrari"} key={"Ferrari"} child={2} parent={1} clicked={(parent, child) => this.slideForwardHandler(parent, child)}>
             {"Ferrari"}
           </NavItem>
         </NavItems>
-        <NavItems parent={0} posX={this.state.menus[2]}>
-          <BackArrow parent={0} current={2} clicked={(parent, child) => this.slideBackwardHandler(parent, child)}>{"Main menu"}</BackArrow>
+        <NavItems parent={1} posX={this.state.menus[2]}>
+          <BackArrow parent={1} current={2} clicked={(parent, child) => this.slideBackwardHandler(parent, child)}>{"Main menu"}</BackArrow>
+          <NavItem link={"/Ferrari1"} key={"Ferrari1"} child={-1} parent={2}>
+            {"Ferrari 1"}
+          </NavItem>
+        </NavItems>
+        <NavItems parent={0} posX={this.state.menus[3]}>
+          <BackArrow parent={0} current={3} clicked={(parent, child) => this.slideBackwardHandler(parent, child)}>{"Main menu"}</BackArrow>
           <NavItem link={"/Macbook"} key={"Macbook"} child={-1}>
             {"Macbook Pro"}
           </NavItem>
