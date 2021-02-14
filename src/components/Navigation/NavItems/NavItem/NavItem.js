@@ -12,10 +12,12 @@ class NavItem extends Component {
   };
 
   moveForwardHandler = () => {
-    this.setState({
-      move: -80,
-    });
-    this.props.move(-80);
+    console.log('clicked');
+    // this.setState({
+    //   move: -80,
+    // });
+    // this.props.move(-80);
+    this.props.clicked(this.state.parent, this.state.child);
   };
 
   moveBackwardHandler = () => {
@@ -31,9 +33,9 @@ class NavItem extends Component {
         <div>{this.props.children}</div>
       </a>
     );
-    let childrenItems = null;
+    // let childrenItems = null;
 
-    if (this.props.childrenItems) {
+    if (this.props.child !== -1) {
       item = (
         <a
           className={this.props.active ? classes.active : null}
@@ -41,7 +43,7 @@ class NavItem extends Component {
         >
           <div>{this.props.children}</div>
           <div>
-            {this.props.childrenItems ? (
+            {this.props.child !== -1 ? (
               <i
                 className={[classes.RightArrow, "fa fa-chevron-right"].join(
                   " "
@@ -51,21 +53,21 @@ class NavItem extends Component {
           </div>
         </a>
       );
-      childrenItems = (
-        <NavItems
-          items={this.props.childrenItems}
-          isChild={true}
-          parentName={this.props.children}
-          grandParentName={this.props.parentName}
-          steps={this.state.move}
-          backward={this.moveBackwardHandler}
-        />
-      );
+      // childrenItems = (
+      //   <NavItems
+      //     items={this.props.childrenItems}
+      //     isChild={true}
+      //     parentName={this.props.children}
+      //     grandParentName={this.props.parentName}
+      //     steps={this.state.move}
+      //     backward={this.moveBackwardHandler}
+      //   />
+      // );
     }
     return (
       <li className={classes.NavItem}>
         {item}
-        {childrenItems}
+        {/* {childrenItems} */}
       </li>
     );
   }

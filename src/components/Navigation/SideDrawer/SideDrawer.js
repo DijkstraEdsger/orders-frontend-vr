@@ -44,15 +44,15 @@ class SideDrawer extends Component {
             key={"Cars"}
             child={1}
             parent={0}
-            onClick={(parent, child) => this.slideForwardHandler(parent, child)}
+            clicked={(parent, child) => this.slideForwardHandler(parent, child)}
           >
             {"Cars"}
           </NavItem>
           <NavItem
-            link={"/Computers"}
             key={"Computers"}
             child={2}
-            onClick={(parent, child) => this.slideForwardHandler(parent, child)}
+            parent={0}
+            clicked={(parent, child) => this.slideForwardHandler(parent, child)}
           >
             {"Computers"}
           </NavItem>
