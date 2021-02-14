@@ -30,6 +30,17 @@ class SideDrawer extends Component {
     });
   };
 
+  slideBackwardHandler = (parent, current) => {
+    // this.navItemsRef = this.state.menus[parent];
+    // console.log('navItemsRef', this.navItemsRef);
+    let m = [...this.state.menus];
+    m[parent] = "0vw";
+    m[current] = "80vw";
+    this.setState({
+      menus: m,
+    });
+  };
+
   render() {
     // console.log('navItemsRef', this.navItemsReferences[0]);
     let classesSideDrawer = [classes.SideDrawer, classes.Close];
@@ -58,13 +69,13 @@ class SideDrawer extends Component {
           </NavItem>
         </NavItems>
         <NavItems parent={0} posX={this.state.menus[1]}>
-          <BackArrow parent={0}>{"Main menu"}</BackArrow>
+          <BackArrow parent={0} current={1} clicked={(parent, child) => this.slideBackwardHandler(parent, child)}>{"Main menu"}</BackArrow>
           <NavItem link={"/Ferrari"} key={"Ferrari"} child={-1} parent={1}>
             {"Ferrari"}
           </NavItem>
         </NavItems>
         <NavItems parent={0} posX={this.state.menus[2]}>
-          <BackArrow parent={0}>{"Main menu"}</BackArrow>
+          <BackArrow parent={0} current={2} clicked={(parent, child) => this.slideBackwardHandler(parent, child)}>{"Main menu"}</BackArrow>
           <NavItem link={"/Macbook"} key={"Macbook"} child={-1}>
             {"Macbook Pro"}
           </NavItem>
