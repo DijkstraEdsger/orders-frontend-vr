@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NavItem from "./NavItem.js/NavItem";
+import NavItem from "./NavItem/NavItem";
 import classes from "./NavItems.module.css";
 import PropTypes from "prop-types";
 import BackArrow from "../BackArrow/BackArrow";
@@ -17,27 +17,27 @@ class NavItems extends Component {
   };
 
   componentDidMount() {
-    if (this.props.isChild) {
-      this.elementRef.current.style.left = "80vw";
-    } else {
-      this.elementRef.current.style.left = "0vw";
-    }
+    // if (this.props.isChild) {
+    //   this.elementRef.current.style.left = "80vw";
+    // } else {
+    //   this.elementRef.current.style.left = "0vw";
+    // }
   }
 
   componentDidUpdate() {
-    let left = parseInt(this.elementRef.current.style.left) + this.props.steps;
-    this.elementRef.current.style.left = left.toString() + "vw";
+    // let left = parseInt(this.elementRef.current.style.left) + this.props.steps;
+    // this.elementRef.current.style.left = left.toString() + "vw";
   }
 
   setPositionXHandler = (steps) => {
-    let left = parseInt(this.elementRef.current.style.left) + steps;
-    this.elementRef.current.style.left = left.toString() + "vw";
+    // let left = parseInt(this.elementRef.current.style.left) + steps;
+    // this.elementRef.current.style.left = left.toString() + "vw";
   };
 
   backwardHandler = (steps) => {
-    let left = parseInt(this.elementRef.current.style.left) + steps;
-    this.elementRef.current.style.left = left.toString() + "vw";
-    this.props.backward();
+    // let left = parseInt(this.elementRef.current.style.left) + steps;
+    // this.elementRef.current.style.left = left.toString() + "vw";
+    // this.props.backward();
   };
 
   render() {
@@ -69,10 +69,11 @@ class NavItems extends Component {
     }
 
     return (
-      <ul className={classes.NavItems} ref={this.elementRef}>
+      <ul className={classes.NavItems} style={{left: this.props.posX}}>
         {backArrow}
         <HeadItem>{this.props.parentName}</HeadItem>
-        {items}
+        {/* {items} */}
+        {this.props.children}
       </ul>
     );
   }

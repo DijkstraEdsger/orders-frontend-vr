@@ -6,6 +6,9 @@ import NavItems from "../NavItems";
 class NavItem extends Component {
   state = {
     move: null,
+    // refactoring
+    parent: this.props.parent,
+    child: this.props.child
   };
 
   moveForwardHandler = () => {
@@ -53,7 +56,7 @@ class NavItem extends Component {
           items={this.props.childrenItems}
           isChild={true}
           parentName={this.props.children}
-          grandParentName={this.props.parent}
+          grandParentName={this.props.parentName}
           steps={this.state.move}
           backward={this.moveBackwardHandler}
         />
@@ -73,7 +76,7 @@ NavItem.propTypes = {
   link: PropTypes.string,
   childrenItems: PropTypes.array,
   left: PropTypes.func,
-  parent: PropTypes.string,
+  parentName: PropTypes.string,
 };
 
 export default NavItem;

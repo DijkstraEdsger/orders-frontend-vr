@@ -38,7 +38,7 @@ class Navigation extends Component {
           },
         ],
       },
-    ],
+    ],    
   };
 
   sideDrawerTogglerHandler = () => {

@@ -1,23 +1,84 @@
-import React from "react";
+import React, { Component } from "react";
 import classes from "./SideDrawer.module.css";
 import PropTypes from "prop-types";
 import NavItems from "../NavItems/NavItems";
+import NavItem from "../NavItems/NavItem/NavItem";
+import BackArrow from "../BackArrow/BackArrow";
+import HeadItem from "../SideDrawer/HeadItem/HeadItem";
 
-const sideDrawer = (props) => {
-  let classesSideDrawer = [classes.SideDrawer, classes.Close];
-  if (props.open) {
-    classesSideDrawer = [classes.SideDrawer, classes.Open];
+class SideDrawer extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.navItemsReferences = [
+  //     React.createRef(),
+  //     React.createRef(),
+  //     React.createRef(),
+  //   ];
+  // }
+  state = {
+    menus: ["0vw", "80vw", "80vw"],
+  };
+
+  slideForwardHandler = (parent, child) => {
+    // this.navItemsRef = this.state.menus[parent];
+    // console.log('navItemsRef', this.navItemsRef);
+    let m = [...this.state.menus];
+    m[parent] = "-80vw";
+    m[child] = "0vw";
+    this.setState({
+      menus: m,
+    });
+  };
+
+  render() {
+    // console.log('navItemsRef', this.navItemsReferences[0]);
+    let classesSideDrawer = [classes.SideDrawer, classes.Close];
+    if (this.props.open) {
+      classesSideDrawer = [classes.SideDrawer, classes.Open];
+    }
+    return (
+      <div className={classesSideDrawer.join(" ")}>
+        {/* <NavItems items={this.props.navItems} isChild={false} positionX={0} /> */}
+        <NavItems parent={-1} posX={this.state.menus[0]}>
+          <NavItem
+            key={"Cars"}
+            child={1}
+            parent={0}
+            onClick={(parent, child) => this.slideForwardHandler(parent, child)}
+          >
+            {"Cars"}
+          </NavItem>
+          <NavItem
+            link={"/Computers"}
+            key={"Computers"}
+            child={2}
+            onClick={(parent, child) => this.slideForwardHandler(parent, child)}
+          >
+            {"Computers"}
+          </NavItem>
+        </NavItems>
+        <NavItems parent={0} posX={this.state.menus[1]}>
+          <BackArrow parent={0}>{"Main menu"}</BackArrow>
+          <NavItem link={"/Ferrari"} key={"Ferrari"} child={-1} parent={1}>
+            {"Ferrari"}
+          </NavItem>
+        </NavItems>
+        <NavItems parent={0} posX={this.state.menus[2]}>
+          <BackArrow parent={0}>{"Main menu"}</BackArrow>
+          <NavItem link={"/Macbook"} key={"Macbook"} child={-1}>
+            {"Macbook Pro"}
+          </NavItem>
+        </NavItems>
+        {/* <div style={{left: "20vw"}}>Humberto</div> */}
+        {/* <BackArrow>HUMBERTO</BackArrow> */}
+      </div>
+    );
   }
-  return (
-    <div className={classesSideDrawer.join(" ")}>
-      <NavItems items={props.navItems} isChild={false} positionX={0} />
-    </div>
-  );
-};
+}
 
-sideDrawer.propTypes = {
+SideDrawer.propTypes = {
   open: PropTypes.bool,
   navItems: PropTypes.array,
 };
 
-export default sideDrawer;
+export default SideDrawer;
