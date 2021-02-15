@@ -70,8 +70,8 @@ class NavItems extends Component {
 
     return (
       <ul className={classes.NavItems} style={{left: this.props.posX}}>
-        {backArrow}
-        <HeadItem>{this.props.parentName}</HeadItem>
+        {/* {backArrow} */}
+        {/* <HeadItem>{this.props.parentName}</HeadItem> */}
         {/* {items} */}
         {this.props.children}
       </ul>
