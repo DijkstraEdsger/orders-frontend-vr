@@ -1,27 +1,15 @@
 import React, { Component, useState } from "react";
 import classes from "./NavItem.module.css";
 import PropTypes from "prop-types";
-import NavItems from "../NavItems";
 
 class NavItem extends Component {
   state = {
-    move: null,
-    // refactoring
     parent: this.props.parent,
-    child: this.props.child
+    child: this.props.child,
   };
 
   moveForwardHandler = () => {
-    console.log('clicked');
-    // this.setState({
-    //   move: -80,
-    // });
-    // this.props.move(-80);
     this.props.clicked(this.state.parent, this.state.child);
-  };
-
-  moveBackwardHandler = () => {
-    this.props.move(80);
   };
 
   render() {
@@ -33,7 +21,6 @@ class NavItem extends Component {
         <div>{this.props.children}</div>
       </a>
     );
-    // let childrenItems = null;
 
     if (this.props.child !== -1) {
       item = (
@@ -53,32 +40,14 @@ class NavItem extends Component {
           </div>
         </a>
       );
-      // childrenItems = (
-      //   <NavItems
-      //     items={this.props.childrenItems}
-      //     isChild={true}
-      //     parentName={this.props.children}
-      //     grandParentName={this.props.parentName}
-      //     steps={this.state.move}
-      //     backward={this.moveBackwardHandler}
-      //   />
-      // );
     }
-    return (
-      <li className={classes.NavItem}>
-        {item}
-        {/* {childrenItems} */}
-      </li>
-    );
+    return <li className={classes.NavItem}>{item}</li>;
   }
 }
 
 NavItem.propTypes = {
   active: PropTypes.bool,
   link: PropTypes.string,
-  childrenItems: PropTypes.array,
-  left: PropTypes.func,
-  parentName: PropTypes.string,
 };
 
 export default NavItem;

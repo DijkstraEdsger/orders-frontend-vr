@@ -7,7 +7,6 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
     this.positions = [];
-    this.navItem = {};
   }
   state = {
     showSideDrawer: false,
@@ -110,15 +109,16 @@ class Navigation extends Component {
   };
 
   preProcessNavItems = (tree) => {
-    this.navItem.name = "Main";
-    this.navItem.childrenItems = this.state.navItems;
-    this.dfs(this.navItem, 0, tree, -1, "");
+    let navItem = {};
+    navItem.name = "Main";
+    navItem.childrenItems = this.state.navItems;
+    this.dfs(navItem, 0, tree, -1, "");
   };
 
   sideDrawerTogglerHandler = () => {
     this.setState((prevState) => {
       return {
-        ...this.state,
+        // ...this.state,
         showSideDrawer: !prevState.showSideDrawer,
       };
     });
@@ -126,7 +126,7 @@ class Navigation extends Component {
 
   sideDrawerClose = () => {
     this.setState({
-      ...this.state,
+      // ...this.state,
       showSideDrawer: false,
     });
   };
@@ -135,14 +135,9 @@ class Navigation extends Component {
     let preProcessedNavItems = [];
     this.positions = [];
     this.preProcessNavItems(preProcessedNavItems);
-    console.log("menus new", this.preProcessedNavItems);
-    console.log("this.positions", this.positions);
 
     return (
       <div>
-        {/* {this.state.showSideDrawer ? (
-          <Backdrop clicked={this.sideDrawerClose} />
-        ) : null} */}
         <Backdrop
           clicked={this.sideDrawerClose}
           show={this.state.showSideDrawer}
