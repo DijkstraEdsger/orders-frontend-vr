@@ -14,8 +14,8 @@ class SideDrawer extends Component {
   }
 
   state = {
-    menus: ["0vw", "80vw", "80vw", "80vw", "80vw", "80vw"],
-    // menus: [],
+    // menus: ["0vw", "80vw", "80vw", "80vw", "80vw", "80vw"],
+    menus: this.props.positions,
     navItems: null,
   };
 
@@ -28,90 +28,90 @@ class SideDrawer extends Component {
     // }, 3000);
   }
 
-  dfs = (navItem, currentNavItemsIndex, tree) => {
-    if (navItem.childrenItems) {
-      let navItemsChildren = [];
-      tree.push(currentNavItemsIndex);
-      navItem.childrenItems.forEach((navItemChild) => {
-        let child = -1;
-        if (navItemChild.childrenItems) {
-          child = tree.length;
-        }
-        navItemsChildren.push(
-          <NavItem
-            key={navItemChild.name}
-            child={child}
-            parent={currentNavItemsIndex}
-            clicked={(parent, child) => this.slideForwardHandler(parent, child)}
-          >
-            {navItemChild.name}
-          </NavItem>
-        );
-        this.dfs(navItemChild, tree.length, tree);
-      });
-      // let l = this.state.menus;
-      // let m = currentNavItemsIndex ? "0vw" : "80vw"; 
-      // l.push(m)
-      // this.setState({
-      //   menus: m
-      // })
-      let navItems = (
-        <NavItems
-          parent={-1}
-          posX={this.state.menus[currentNavItemsIndex]}
-          key={currentNavItemsIndex}
-        >
-          {/* {currentNavItemsIndex ? (
-            <BackArrow
-              parent={0}
-              current={1}
-              clicked={(parent, child) =>
-                this.slideBackwardHandler(parent, child)
-              }
-            >
-              {"Main menu"}
-            </BackArrow>
-          ) : null}
-          <HeadItem>{"Cars"}</HeadItem> */}
-          {navItemsChildren}
-        </NavItems>
-      );
-      tree[currentNavItemsIndex] = navItems;
-    }
-    // return;
-  };
+  // dfs = (navItem, currentNavItemsIndex, tree) => {
+  //   if (navItem.childrenItems) {
+  //     let navItemsChildren = [];
+  //     tree.push(currentNavItemsIndex);
+  //     navItem.childrenItems.forEach((navItemChild) => {
+  //       let child = -1;
+  //       if (navItemChild.childrenItems) {
+  //         child = tree.length;
+  //       }
+  //       navItemsChildren.push(
+  //         <NavItem
+  //           key={navItemChild.name}
+  //           child={child}
+  //           parent={currentNavItemsIndex}
+  //           clicked={(parent, child) => this.slideForwardHandler(parent, child)}
+  //         >
+  //           {navItemChild.name}
+  //         </NavItem>
+  //       );
+  //       this.dfs(navItemChild, tree.length, tree);
+  //     });
+  //     // let l = this.state.menus;
+  //     // let m = currentNavItemsIndex ? "0vw" : "80vw";
+  //     // l.push(m)
+  //     // this.setState({
+  //     //   menus: m
+  //     // })
+  //     let navItems = (
+  //       <NavItems
+  //         parent={-1}
+  //         posX={this.state.menus[currentNavItemsIndex]}
+  //         key={currentNavItemsIndex}
+  //       >
+  //         {/* {currentNavItemsIndex ? (
+  //           <BackArrow
+  //             parent={0}
+  //             current={1}
+  //             clicked={(parent, child) =>
+  //               this.slideBackwardHandler(parent, child)
+  //             }
+  //           >
+  //             {"Main menu"}
+  //           </BackArrow>
+  //         ) : null}
+  //         <HeadItem>{"Cars"}</HeadItem> */}
+  //         {navItemsChildren}
+  //       </NavItems>
+  //     );
+  //     tree[currentNavItemsIndex] = navItems;
+  //   }
+  //   // return;
+  // };
 
-  preProcessNavItems = (tree) => {
-    this.navItem.name = "Main";
-    this.navItem.childrenItems = this.props.navItems;
-    this.dfs(this.navItem, 0, tree);
-    // let navItemsChildren = [];
-    // let currentNavItemsIndex = 0;
-    // this.preProcessedNavItems.push(currentNavItemsIndex);
-    // this.state.navItems.forEach((navItem) => {
-    //   this.dfs(navItem, currentNavItemsIndex + 1);
-    //   let child = -1;
-    //   if (navItem.childrenItems) {
-    //     child = this.preProcessedNavItems.length + 1;
-    //   }
-    //   navItemsChildren.push(
-    //     <NavItem
-    //       key={navItem.name}
-    //       child={child}
-    //       parent={currentNavItemsIndex}
-    //       clicked={(parent, child) => this.slideForwardHandler(parent, child)}
-    //     >
-    //       {navItem.name}
-    //     </NavItem>
-    //   );
-    // });
-    // let navItems = (
-    //   <NavItems parent={-1} posX={this.state.menus[0]}>
-    //     {navItemsChildren}
-    //   </NavItems>
-    // );
-    // this.preProcessedNavItems[currentNavItemsIndex] = navItems;
-  };
+  // preProcessNavItems = (tree) => {
+  //   this.navItem.name = "Main";
+  //   this.navItem.childrenItems = this.props.navItems;
+  //   this.dfs(this.navItem, 0, tree);
+  //   // let navItemsChildren = [];
+  //   // let currentNavItemsIndex = 0;
+  //   // this.preProcessedNavItems.push(currentNavItemsIndex);
+  //   // this.state.navItems.forEach((navItem) => {
+  //   //   this.dfs(navItem, currentNavItemsIndex + 1);
+  //   //   let child = -1;
+  //   //   if (navItem.childrenItems) {
+  //   //     child = this.preProcessedNavItems.length + 1;
+  //   //   }
+  //   //   navItemsChildren.push(
+  //   //     <NavItem
+  //   //       key={navItem.name}
+  //   //       child={child}
+  //   //       parent={currentNavItemsIndex}
+  //   //       clicked={(parent, child) => this.slideForwardHandler(parent, child)}
+  //   //     >
+  //   //       {navItem.name}
+  //   //     </NavItem>
+  //   //   );
+  //   // });
+  //   // let navItems = (
+  //   //   <NavItems parent={-1} posX={this.state.menus[0]}>
+  //   //     {navItemsChildren}
+  //   //   </NavItems>
+  //   // );
+  //   // this.preProcessedNavItems[currentNavItemsIndex] = navItems;
+  // };
 
   slideForwardHandler = (parent, child) => {
     console.log("slideForwardHandler");
@@ -137,13 +137,31 @@ class SideDrawer extends Component {
   };
 
   render() {
-    let preProcessedNavItems = [];
-    console.log("menus  length", this.preProcessedNavItems);
-    this.preProcessNavItems(preProcessedNavItems);
-    console.log("menus length", this.preProcessedNavItems.length);
-    setTimeout(() => {
-      console.log("menus length", this.preProcessedNavItems.length);
-    }, 3000);
+    console.log("this.props.navItems", this.props.navItems);
+    let preProcessedNavItems = this.props.navItems.map((navItems, index) => {
+      return (
+        <NavItems
+          parent={-1}
+          posX={this.state.menus[navItems.posXIndex]}
+          key={index}
+        >
+          {navItems.navItemsChildren.map((navItem) => {
+            return (
+              <NavItem
+                key={navItem.name}
+                child={navItem.child}
+                parent={index}
+                clicked={(parent, child) =>
+                  this.slideForwardHandler(parent, child)
+                }
+              >
+                {navItem.name}
+              </NavItem>
+            );
+          })}
+        </NavItems>
+      );
+    });
 
     // console.log('navItemsRef', this.navItemsReferences[0]);
     let classesSideDrawer = [classes.SideDrawer, classes.Close];

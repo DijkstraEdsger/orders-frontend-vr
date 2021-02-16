@@ -4,6 +4,11 @@ import SideDrawer from "./SideDrawer/SideDrawer";
 import Backdrop from "./Backdrop/Backdrop";
 
 class Navigation extends Component {
+  constructor(props) {
+    super(props);
+    this.positions = [];
+    this.navItem = {};
+  }
   state = {
     showSideDrawer: false,
     navItems: [
@@ -68,6 +73,39 @@ class Navigation extends Component {
     ],
   };
 
+  dfs = (navItem, currentNavItemsIndex, tree) => {
+    if (navItem.childrenItems) {
+      let navItemsChildren = [];
+      tree.push(currentNavItemsIndex);
+      let m = currentNavItemsIndex === 0 ? "0vw" : "80vw";
+      this.positions.push(m);
+      navItem.childrenItems.forEach((navItemChild) => {
+        let child = -1;
+        if (navItemChild.childrenItems) {
+          child = tree.length;
+        }
+        navItemsChildren.push({
+          child: child,
+          parent: currentNavItemsIndex,
+          name: navItemChild.name,
+        });
+        this.dfs(navItemChild, tree.length, tree);
+      });
+
+      tree[currentNavItemsIndex] = {
+        parent: -1,
+        posXIndex: currentNavItemsIndex,
+        navItemsChildren: navItemsChildren,
+      };
+    }
+  };
+
+  preProcessNavItems = (tree) => {
+    this.navItem.name = "Main";
+    this.navItem.childrenItems = this.state.navItems;
+    this.dfs(this.navItem, 0, tree);
+  };
+
   sideDrawerTogglerHandler = () => {
     this.setState((prevState) => {
       return {
@@ -85,6 +123,12 @@ class Navigation extends Component {
   };
 
   render() {
+    let preProcessedNavItems = [];
+    this.positions = [];
+    this.preProcessNavItems(preProcessedNavItems);
+    console.log("menus new", this.preProcessedNavItems);
+    console.log("this.positions", this.positions);
+
     return (
       <div>
         {/* {this.state.showSideDrawer ? (
@@ -97,7 +141,8 @@ class Navigation extends Component {
         <Toolbar clickedToggle={this.sideDrawerTogglerHandler} />
         <SideDrawer
           open={this.state.showSideDrawer}
-          navItems={this.state.navItems}
+          navItems={preProcessedNavItems}
+          positions={this.positions}
         />
       </div>
     );
