@@ -73,7 +73,7 @@ class Navigation extends Component {
     ],
   };
 
-  dfs = (navItem, currentNavItemsIndex, tree) => {
+  dfs = (navItem, currentNavItemsIndex, tree, parent) => {
     if (navItem.childrenItems) {
       let navItemsChildren = [];
       tree.push(currentNavItemsIndex);
@@ -89,11 +89,12 @@ class Navigation extends Component {
           parent: currentNavItemsIndex,
           name: navItemChild.name,
         });
-        this.dfs(navItemChild, tree.length, tree);
+        this.dfs(navItemChild, tree.length, tree, currentNavItemsIndex);
       });
 
       tree[currentNavItemsIndex] = {
-        parent: -1,
+        parent: parent,
+        current: currentNavItemsIndex,
         posXIndex: currentNavItemsIndex,
         navItemsChildren: navItemsChildren,
       };

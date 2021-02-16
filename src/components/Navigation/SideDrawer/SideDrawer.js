@@ -137,7 +137,6 @@ class SideDrawer extends Component {
   };
 
   render() {
-    console.log("this.props.navItems", this.props.navItems);
     let preProcessedNavItems = this.props.navItems.map((navItems, index) => {
       return (
         <NavItems
@@ -145,6 +144,17 @@ class SideDrawer extends Component {
           posX={this.state.menus[navItems.posXIndex]}
           key={index}
         >
+          {navItems.current ? (
+            <BackArrow
+              parent={navItems.parent}
+              current={navItems.current}
+              clicked={(parent, child) =>
+                this.slideBackwardHandler(parent, child)
+              }
+            >
+              {"Main menu"}
+            </BackArrow>
+          ) : null}
           {navItems.navItemsChildren.map((navItem) => {
             return (
               <NavItem
