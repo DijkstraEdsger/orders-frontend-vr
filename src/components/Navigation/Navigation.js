@@ -73,7 +73,7 @@ class Navigation extends Component {
     ],
   };
 
-  dfs = (navItem, currentNavItemsIndex, tree, parent) => {
+  dfs = (navItem, currentNavItemsIndex, tree, parent, parentName) => {
     if (navItem.childrenItems) {
       let navItemsChildren = [];
       tree.push(currentNavItemsIndex);
@@ -89,12 +89,19 @@ class Navigation extends Component {
           parent: currentNavItemsIndex,
           name: navItemChild.name,
         });
-        this.dfs(navItemChild, tree.length, tree, currentNavItemsIndex);
+        this.dfs(
+          navItemChild,
+          tree.length,
+          tree,
+          currentNavItemsIndex,
+          navItem.name
+        );
       });
 
       tree[currentNavItemsIndex] = {
         parent: parent,
         current: currentNavItemsIndex,
+        parentName: parentName,
         posXIndex: currentNavItemsIndex,
         navItemsChildren: navItemsChildren,
       };
@@ -104,7 +111,7 @@ class Navigation extends Component {
   preProcessNavItems = (tree) => {
     this.navItem.name = "Main";
     this.navItem.childrenItems = this.state.navItems;
-    this.dfs(this.navItem, 0, tree);
+    this.dfs(this.navItem, 0, tree, -1, "");
   };
 
   sideDrawerTogglerHandler = () => {

@@ -152,7 +152,7 @@ class SideDrawer extends Component {
                 this.slideBackwardHandler(parent, child)
               }
             >
-              {"Main menu"}
+              {navItems.parentName}
             </BackArrow>
           ) : null}
           {navItems.navItemsChildren.map((navItem) => {
