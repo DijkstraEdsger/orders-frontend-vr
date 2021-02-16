@@ -14,7 +14,8 @@ class SideDrawer extends Component {
   }
 
   state = {
-    menus: ["0vw", "80vw", "80vw", "80vw", "80vw"],
+    menus: ["0vw", "80vw", "80vw", "80vw", "80vw", "80vw"],
+    // menus: [],
     navItems: null,
   };
 
@@ -28,7 +29,6 @@ class SideDrawer extends Component {
   }
 
   dfs = (navItem, currentNavItemsIndex, tree) => {
-    console.log('tree in dfs', tree);
     if (navItem.childrenItems) {
       let navItemsChildren = [];
       tree.push(currentNavItemsIndex);
@@ -47,14 +47,32 @@ class SideDrawer extends Component {
             {navItemChild.name}
           </NavItem>
         );
-        this.dfs(navItemChild, tree.length, tree);        
+        this.dfs(navItemChild, tree.length, tree);
       });
+      // let l = this.state.menus;
+      // let m = currentNavItemsIndex ? "0vw" : "80vw"; 
+      // l.push(m)
+      // this.setState({
+      //   menus: m
+      // })
       let navItems = (
         <NavItems
           parent={-1}
           posX={this.state.menus[currentNavItemsIndex]}
           key={currentNavItemsIndex}
         >
+          {/* {currentNavItemsIndex ? (
+            <BackArrow
+              parent={0}
+              current={1}
+              clicked={(parent, child) =>
+                this.slideBackwardHandler(parent, child)
+              }
+            >
+              {"Main menu"}
+            </BackArrow>
+          ) : null}
+          <HeadItem>{"Cars"}</HeadItem> */}
           {navItemsChildren}
         </NavItems>
       );
@@ -64,7 +82,6 @@ class SideDrawer extends Component {
   };
 
   preProcessNavItems = (tree) => {
-    console.log('tree', tree);
     this.navItem.name = "Main";
     this.navItem.childrenItems = this.props.navItems;
     this.dfs(this.navItem, 0, tree);
@@ -97,7 +114,7 @@ class SideDrawer extends Component {
   };
 
   slideForwardHandler = (parent, child) => {
-    console.log('slideForwardHandler');
+    console.log("slideForwardHandler");
     // this.navItemsRef = this.state.menus[parent];
     // console.log('navItemsRef', this.navItemsRef);
     let m = [...this.state.menus];
@@ -127,7 +144,6 @@ class SideDrawer extends Component {
     setTimeout(() => {
       console.log("menus length", this.preProcessedNavItems.length);
     }, 3000);
-
 
     // console.log('navItemsRef', this.navItemsReferences[0]);
     let classesSideDrawer = [classes.SideDrawer, classes.Close];
