@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Toolbar from "./Toolbar/Toolbar";
 import SideDrawer from "./SideDrawer/SideDrawer";
 import Backdrop from "./Backdrop/Backdrop";
+import PropTypes from "prop-types";
 
 class Navigation extends Component {
   constructor(props) {
@@ -10,74 +11,14 @@ class Navigation extends Component {
   }
   state = {
     showSideDrawer: false,
-    navItems: [
-      {
-        name: "Versions",
-        link: "/versions",
-        childrenItems: [
-          {
-            name: "1",
-            link: "/version1",
-            childrenItems: [
-              { name: "1.1", link: "/version1.1" },
-              {
-                name: "1.2",
-                link: "/version1.2",
-                childrenItems: [
-                  { name: "1.2.1", link: "/version1.2.1" },
-                  { name: "1.2.2", link: "/version1.2.2" },
-                ],
-              },
-            ],
-          },
-          { name: "2", link: "/version2", childrenItems: [] },
-          {
-            name: "3",
-            link: "/version3",
-            childrenItems: [{ name: "3.1", link: "/version3.1" }],
-          },
-          { name: "4", link: "/version4", childrenItems: [] },
-        ],
-      },
-      { name: "Other", link: "/other" },
-      {
-        name: "Cars",
-        link: "",
-        childrenItems: [
-          { name: "Audi", link: "/audi" },
-          {
-            name: "Ferrari",
-            link: "/ferrari",
-            childrenItems: [
-              {
-                name: "Ferrari 1",
-                link: "/ferrari1",
-                childrenItems: [
-                  { name: "Ferrari 1.1", link: "/ferrari11" },
-                  { name: "Ferrari 1.2", link: "/ferrari12" },
-                ],
-              },
-              {
-                name: "Ferrari 2",
-                link: "/ferrari2",
-                childrenItems: [
-                  { name: "Ferrari 2.1", link: "/ferrari21" },
-                  { name: "Ferrari 2.2", link: "/ferrari22" },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    ],
   };
 
   dfs = (navItem, currentNavItemsIndex, tree, parent, parentName) => {
     if (navItem.childrenItems) {
       let navItemsChildren = [];
       tree.push(currentNavItemsIndex);
-      let m = currentNavItemsIndex === 0 ? "0vw" : "80vw";
-      this.positions.push(m);
+      this.positions.push(currentNavItemsIndex === 0 ? "0vw" : "80vw");
+
       navItem.childrenItems.forEach((navItemChild) => {
         let child = -1;
         if (navItemChild.childrenItems) {
@@ -111,14 +52,13 @@ class Navigation extends Component {
   preProcessNavItems = (tree) => {
     let navItem = {};
     navItem.name = "Main";
-    navItem.childrenItems = this.state.navItems;
+    navItem.childrenItems = this.props.navItems;
     this.dfs(navItem, 0, tree, -1, "");
   };
 
   sideDrawerTogglerHandler = () => {
     this.setState((prevState) => {
       return {
-        // ...this.state,
         showSideDrawer: !prevState.showSideDrawer,
       };
     });
@@ -126,7 +66,6 @@ class Navigation extends Component {
 
   sideDrawerClose = () => {
     this.setState({
-      // ...this.state,
       showSideDrawer: false,
     });
   };
@@ -152,5 +91,9 @@ class Navigation extends Component {
     );
   }
 }
+
+Navigation.propTypes = {
+  navItems: PropTypes.array,
+};
 
 export default Navigation;
