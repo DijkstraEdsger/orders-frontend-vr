@@ -19,25 +19,25 @@ class Navigation extends Component {
           {
             name: "1",
             link: "/version1",
-            // childrenItems: [
-            //   { name: "1.1", link: "/version1.1" },
-            //   {
-            //     name: "1.2",
-            //     link: "/version1.2",
-            //     childrenItems: [
-            //       { name: "1.2.1", link: "/version1.2.1" },
-            //       { name: "1.2.2", link: "/version1.2.2" },
-            //     ],
-            //   },
-            // ],
+            childrenItems: [
+              { name: "1.1", link: "/version1.1" },
+              {
+                name: "1.2",
+                link: "/version1.2",
+                childrenItems: [
+                  { name: "1.2.1", link: "/version1.2.1" },
+                  { name: "1.2.2", link: "/version1.2.2" },
+                ],
+              },
+            ],
           },
-          // { name: "2", link: "/version2", childrenItems: [] },
-          // {
-          //   name: "3",
-          //   link: "/version3",
-          //   childrenItems: [{ name: "3.1", link: "/version3.1" }],
-          // },
-          // { name: "4", link: "/version4", childrenItems: [] },
+          { name: "2", link: "/version2", childrenItems: [] },
+          {
+            name: "3",
+            link: "/version3",
+            childrenItems: [{ name: "3.1", link: "/version3.1" }],
+          },
+          { name: "4", link: "/version4", childrenItems: [] },
         ],
       },
       { name: "Other", link: "/other" },
@@ -102,6 +102,7 @@ class Navigation extends Component {
         parent: parent,
         current: currentNavItemsIndex,
         parentName: parentName,
+        headName: navItem.name,
         posXIndex: currentNavItemsIndex,
         navItemsChildren: navItemsChildren,
       };

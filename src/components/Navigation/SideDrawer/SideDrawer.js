@@ -155,6 +155,7 @@ class SideDrawer extends Component {
               {navItems.parentName}
             </BackArrow>
           ) : null}
+          <HeadItem>{navItems.headName}</HeadItem>
           {navItems.navItemsChildren.map((navItem) => {
             return (
               <NavItem
