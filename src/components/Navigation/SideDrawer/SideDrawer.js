@@ -19,22 +19,23 @@ class SideDrawer extends Component {
   };
 
   componentDidMount() {
-    console.log("menus  length", this.preProcessedNavItems);
-    this.preProcessNavItems();
-    console.log("menus length", this.preProcessedNavItems.length);
-    setTimeout(() => {
-      console.log("menus length", this.preProcessedNavItems.length);
-    }, 3000);
+    // console.log("menus  length", this.preProcessedNavItems);
+    // this.preProcessNavItems();
+    // console.log("menus length", this.preProcessedNavItems.length);
+    // setTimeout(() => {
+    //   console.log("menus length", this.preProcessedNavItems.length);
+    // }, 3000);
   }
 
-  dfs = (navItem, currentNavItemsIndex) => {
+  dfs = (navItem, currentNavItemsIndex, tree) => {
+    console.log('tree in dfs', tree);
     if (navItem.childrenItems) {
       let navItemsChildren = [];
-      this.preProcessedNavItems.push(currentNavItemsIndex);
+      tree.push(currentNavItemsIndex);
       navItem.childrenItems.forEach((navItemChild) => {
         let child = -1;
         if (navItemChild.childrenItems) {
-          child = this.preProcessedNavItems.length;
+          child = tree.length;
         }
         navItemsChildren.push(
           <NavItem
@@ -46,7 +47,7 @@ class SideDrawer extends Component {
             {navItemChild.name}
           </NavItem>
         );
-        this.dfs(navItemChild, this.preProcessedNavItems.length);        
+        this.dfs(navItemChild, tree.length, tree);        
       });
       let navItems = (
         <NavItems
@@ -57,15 +58,16 @@ class SideDrawer extends Component {
           {navItemsChildren}
         </NavItems>
       );
-      this.preProcessedNavItems[currentNavItemsIndex] = navItems;
+      tree[currentNavItemsIndex] = navItems;
     }
     // return;
   };
 
-  preProcessNavItems = () => {
+  preProcessNavItems = (tree) => {
+    console.log('tree', tree);
     this.navItem.name = "Main";
     this.navItem.childrenItems = this.props.navItems;
-    this.dfs(this.navItem, 0);
+    this.dfs(this.navItem, 0, tree);
     // let navItemsChildren = [];
     // let currentNavItemsIndex = 0;
     // this.preProcessedNavItems.push(currentNavItemsIndex);
@@ -118,6 +120,15 @@ class SideDrawer extends Component {
   };
 
   render() {
+    let preProcessedNavItems = [];
+    console.log("menus  length", this.preProcessedNavItems);
+    this.preProcessNavItems(preProcessedNavItems);
+    console.log("menus length", this.preProcessedNavItems.length);
+    setTimeout(() => {
+      console.log("menus length", this.preProcessedNavItems.length);
+    }, 3000);
+
+
     // console.log('navItemsRef', this.navItemsReferences[0]);
     let classesSideDrawer = [classes.SideDrawer, classes.Close];
     if (this.props.open) {
@@ -194,7 +205,7 @@ class SideDrawer extends Component {
             {"Macbook Pro"}
           </NavItem>
         </NavItems> */}
-        {this.preProcessedNavItems}
+        {preProcessedNavItems}
       </div>
     );
   }
