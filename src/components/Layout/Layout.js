@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import Navigation from "../Navigation/Navigation";
+import Sidenav from "../Sidenav/Sidenav";
+import Toolbar from '../Toolbar/Toolbar';
 
 class Layout extends Component {
+  state = {
+    openSidenav: false,
+  };
   navItems = () => {
     return [
       {
@@ -64,11 +68,38 @@ class Layout extends Component {
       },
     ];
   };
+
+  openSidenavHandler = () => {
+    this.setState({
+      openSidenav: true,
+    });
+  };
+
+  closeSidenavHandler = () => {
+    this.setState({
+      openSidenav: false,
+    });
+  };
+
+  sidenavTogglerHandler = () => {
+    this.setState((prevState) => {
+      return {
+        openSidenav: !prevState.openSidenav,
+      };
+    });
+  };
+
   render() {
     return (
       <div>
-        <Navigation navItems={this.navItems()} />
+        <Sidenav
+          navItems={this.navItems()}
+          open={this.state.openSidenav}
+          onClose={this.closeSidenavHandler}
+        />
+        <Toolbar clickedToggle={this.sidenavTogglerHandler} />
         {this.props.children}
+        <button onClick={this.openSidenavHandler}>Open sidenav</button>
       </div>
     );
   }

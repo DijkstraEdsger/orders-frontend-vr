@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Toolbar from "./Toolbar/Toolbar";
 import SideDrawer from "./SideDrawer/SideDrawer";
 import Backdrop from "./Backdrop/Backdrop";
 import PropTypes from "prop-types";
@@ -9,9 +8,6 @@ class Navigation extends Component {
     super(props);
     this.positions = [];
   }
-  state = {
-    showSideDrawer: false,
-  };
 
   dfs = (navItem, currentNavItemsIndex, tree, parent, parentName) => {
     if (navItem.childrenItems) {
@@ -56,20 +52,6 @@ class Navigation extends Component {
     this.dfs(navItem, 0, tree, -1, "");
   };
 
-  sideDrawerTogglerHandler = () => {
-    this.setState((prevState) => {
-      return {
-        showSideDrawer: !prevState.showSideDrawer,
-      };
-    });
-  };
-
-  sideDrawerClose = () => {
-    this.setState({
-      showSideDrawer: false,
-    });
-  };
-
   render() {
     let preProcessedNavItems = [];
     this.positions = [];
@@ -77,13 +59,9 @@ class Navigation extends Component {
 
     return (
       <div>
-        <Backdrop
-          clicked={this.sideDrawerClose}
-          show={this.state.showSideDrawer}
-        />
-        <Toolbar clickedToggle={this.sideDrawerTogglerHandler} />
+        <Backdrop clicked={() => this.props.onClose()} show={this.props.open} />
         <SideDrawer
-          open={this.state.showSideDrawer}
+          open={this.props.open}
           navItems={preProcessedNavItems}
           positions={this.positions}
         />
@@ -94,6 +72,7 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
   navItems: PropTypes.array,
+  open: PropTypes.bool,
 };
 
 export default Navigation;

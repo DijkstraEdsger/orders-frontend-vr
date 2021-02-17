@@ -32,10 +32,7 @@ class SideDrawer extends Component {
   render() {
     let preProcessedNavItems = this.props.navItems.map((navItems, index) => {
       return (
-        <NavItems
-          posX={this.state.positions[navItems.posXIndex]}
-          key={index}
-        >
+        <NavItems posX={this.state.positions[navItems.posXIndex]} key={index}>
           {navItems.current ? (
             <BackArrow
               parent={navItems.parent}
@@ -79,6 +76,7 @@ class SideDrawer extends Component {
 SideDrawer.propTypes = {
   open: PropTypes.bool,
   navItems: PropTypes.array,
+  positions: PropTypes.array,
 };
 
 export default SideDrawer;

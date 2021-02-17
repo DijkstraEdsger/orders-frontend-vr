@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import NavItems from "../NavItems/NavItems";
-import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
+// import NavItems from "../NavItems/NavItems";
+import DrawerToggle from "./DrawerToggle/DrawerToggle";
 import classes from "./Toolbar.module.css";
 
 const toolbar = (props) => {

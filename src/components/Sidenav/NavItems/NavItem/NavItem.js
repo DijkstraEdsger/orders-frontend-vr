@@ -48,6 +48,9 @@ class NavItem extends Component {
 NavItem.propTypes = {
   active: PropTypes.bool,
   link: PropTypes.string,
+  child: PropTypes.number,
+  parent: PropTypes.number,
+  clicked: PropTypes.func,
 };
 
 export default NavItem;

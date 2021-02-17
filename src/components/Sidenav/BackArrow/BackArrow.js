@@ -4,16 +4,8 @@ import PropTypes from "prop-types";
 
 class BackArrow extends Component {
   state = {
-    showParent: false,
     parent: this.props.parent,
     current: this.props.current,
-  };
-
-  setShowParent = () => {
-    this.setState({
-      showParent: true,
-    });
-    this.props.right();
   };
 
   moveBackwardHandler = () => {
@@ -45,6 +37,9 @@ class BackArrow extends Component {
 BackArrow.propTypes = {
   active: PropTypes.bool,
   link: PropTypes.string,
+  clicked: PropTypes.func,
+  parent: PropTypes.number,
+  current: PropTypes.number,
   clicked: PropTypes.func,
 };
 
