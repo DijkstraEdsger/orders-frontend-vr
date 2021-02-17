@@ -1,6 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import classes from "./NavItem.module.css";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 class NavItem extends Component {
   state = {
@@ -12,14 +13,19 @@ class NavItem extends Component {
     this.props.clicked(this.state.parent, this.state.child);
   };
 
+  onClickedLinkHandler = () => {
+    this.props.clickedLink();
+  };
+
   render() {
     let item = (
-      <a
-        className={this.props.active ? classes.active : null}
-        href={this.props.link}
+      <Link
+        to=""
+        {...this.props.linkOptions}
+        onClick={this.onClickedLinkHandler}
       >
         <div>{this.props.children}</div>
-      </a>
+      </Link>
     );
 
     if (this.props.child !== -1) {
@@ -51,6 +57,8 @@ NavItem.propTypes = {
   child: PropTypes.number,
   parent: PropTypes.number,
   clicked: PropTypes.func,
+  linkOptions: PropTypes.object,
+  clickedLink: PropTypes.func,
 };
 
 export default NavItem;

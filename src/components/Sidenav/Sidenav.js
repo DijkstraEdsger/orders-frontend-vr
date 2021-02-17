@@ -24,6 +24,7 @@ class Navigation extends Component {
           child: child,
           parent: currentNavItemsIndex,
           name: navItemChild.name,
+          link: !navItemChild.navItemsChildren ? navItemChild.link : null,
         });
         this.dfs(
           navItemChild,
@@ -64,6 +65,7 @@ class Navigation extends Component {
           open={this.props.open}
           navItems={preProcessedNavItems}
           positions={this.positions}
+          clickedLink={() => this.props.onClose()}
         />
       </div>
     );

@@ -54,6 +54,8 @@ class SideDrawer extends Component {
                 clicked={(parent, child) =>
                   this.slideForwardHandler(parent, child)
                 }
+                linkOptions={navItem.link}
+                clickedLink={() => this.props.clickedLink()}
               >
                 {navItem.name}
               </NavItem>
@@ -77,6 +79,7 @@ SideDrawer.propTypes = {
   open: PropTypes.bool,
   navItems: PropTypes.array,
   positions: PropTypes.array,
+  clickedLink: PropTypes.func,
 };
 
 export default SideDrawer;
