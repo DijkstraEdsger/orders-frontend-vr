@@ -17,3 +17,9 @@
 .Close {
   transform: translateX(-100vw);
 }
+
+@media (min-width: 500px) {
+  .SideDrawer {
+    width: 30vw;
+  }
+}

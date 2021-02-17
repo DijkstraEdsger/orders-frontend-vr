@@ -8,12 +8,12 @@
   height: 100%;
   position: fixed;
   top: 0;
-  width: 80vw;
+  width: 100%;
   transition: left 0.2s ease-in-out;
 }
 
-@media (min-width: 500px) {
+/* @media (min-width: 500px) {
   .NavItems {
-    flex-direction: row;
+    width: 30vw;
   }
-}
+} */
