@@ -13,8 +13,8 @@ class SideDrawer extends Component {
 
   slideForwardHandler = (parent, child) => {
     let m = [...this.state.positions];
-    m[parent] = "-80vw";
-    m[child] = "0vw";
+    m[parent] = "-100%";
+    m[child] = "0";
     this.setState({
       positions: m,
     });
@@ -22,8 +22,8 @@ class SideDrawer extends Component {
 
   slideBackwardHandler = (parent, current) => {
     let m = [...this.state.positions];
-    m[parent] = "0vw";
-    m[current] = "80vw";
+    m[parent] = "0";
+    m[current] = "100%";
     this.setState({
       positions: m,
     });

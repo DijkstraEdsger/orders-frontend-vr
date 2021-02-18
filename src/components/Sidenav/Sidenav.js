@@ -13,7 +13,7 @@ class Navigation extends Component {
     if (navItem.childrenItems) {
       let navItemsChildren = [];
       tree.push(currentNavItemsIndex);
-      this.positions.push(currentNavItemsIndex === 0 ? "0vw" : "80vw");
+      this.positions.push(currentNavItemsIndex === 0 ? "0" : "100%");
 
       navItem.childrenItems.forEach((navItemChild) => {
         let child = -1;
