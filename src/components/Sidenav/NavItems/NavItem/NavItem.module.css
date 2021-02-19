@@ -54,3 +54,9 @@
 .Icon {
   margin-right: 10px;
 }
+
+@media (min-width: 500px) {
+  .NavItem a {
+    padding: 13px 20px 13px 36px;
+  }
+}
