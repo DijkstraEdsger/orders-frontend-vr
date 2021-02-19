@@ -14,12 +14,6 @@ class BackArrow extends Component {
 
   render() {
     let item = (
-      <a href={this.props.link}>
-        <div>{this.props.children}</div>
-      </a>
-    );
-
-    item = (
       <a
         className={this.props.active ? classes.active : null}
         onClick={this.moveBackwardHandler}

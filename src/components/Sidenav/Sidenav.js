@@ -25,6 +25,7 @@ class Navigation extends Component {
           parent: currentNavItemsIndex,
           name: navItemChild.name,
           link: !navItemChild.navItemsChildren ? navItemChild.link : null,
+          icon: navItemChild.icon
         });
         this.dfs(
           navItemChild,

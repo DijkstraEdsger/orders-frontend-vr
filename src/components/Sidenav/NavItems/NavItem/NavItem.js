@@ -34,7 +34,12 @@ class NavItem extends Component {
           className={this.props.active ? classes.active : null}
           onClick={this.moveForwardHandler}
         >
-          <div>{this.props.children}</div>
+          <div>
+            {this.props.icon ? (
+              <i className={[classes.Icon, this.props.icon].join(" ")}></i>
+            ) : null}
+            {this.props.children}
+          </div>
           <div>
             {this.props.child !== -1 ? (
               <i
@@ -59,6 +64,7 @@ NavItem.propTypes = {
   clicked: PropTypes.func,
   linkOptions: PropTypes.object,
   clickedLink: PropTypes.func,
+  icon: PropTypes.string,
 };
 
 export default NavItem;

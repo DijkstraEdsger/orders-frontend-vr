@@ -44,7 +44,7 @@ class SideDrawer extends Component {
               {navItems.parentName}
             </BackArrow>
           ) : null}
-          <HeadItem>{navItems.headName}</HeadItem>
+          {index !== 0 ? <HeadItem>{navItems.headName}</HeadItem> : null}
           {navItems.navItemsChildren.map((navItem) => {
             return (
               <NavItem
@@ -56,6 +56,7 @@ class SideDrawer extends Component {
                 }
                 linkOptions={navItem.link}
                 clickedLink={() => this.props.clickedLink()}
+                icon={navItem.icon}
               >
                 {navItem.name}
               </NavItem>
