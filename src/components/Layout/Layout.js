@@ -5,7 +5,16 @@ import Toolbar from "../Toolbar/Toolbar";
 class Layout extends Component {
   state = {
     openSidenav: false,
+    navItems: null
   };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        navItems: this.navItems()
+      })
+    }, 5000);
+  }
   navItems = () => {
     return [
       {
@@ -89,7 +98,7 @@ class Layout extends Component {
     return (
       <div>
         <Sidenav
-          navItems={this.navItems()}
+          navItems={this.state.navItems}
           open={this.state.openSidenav}
           onClose={this.closeSidenavHandler}
         />

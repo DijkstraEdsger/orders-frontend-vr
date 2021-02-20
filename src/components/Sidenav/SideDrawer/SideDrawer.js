@@ -8,8 +8,18 @@ import HeadItem from "../SideDrawer/HeadItem/HeadItem";
 
 class SideDrawer extends Component {
   state = {
-    positions: this.props.positions,
+    positions: [],
+    navItems: [],
   };
+
+  componentDidUpdate() {
+    if (this.props.navItems && this.props.navItems !== this.state.navItems) {
+      this.setState({
+        navItems: this.props.navItems,
+        positions: this.props.positions,
+      });
+    }
+  }
 
   slideForwardHandler = (parent, child) => {
     let m = [...this.state.positions];
@@ -30,7 +40,7 @@ class SideDrawer extends Component {
   };
 
   render() {
-    let preProcessedNavItems = this.props.navItems.map((navItems, index) => {
+    let preProcessedNavItems = this.state.navItems.map((navItems, index) => {
       return (
         <NavItems posX={this.state.positions[navItems.posXIndex]} key={index}>
           {navItems.current ? (

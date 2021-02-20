@@ -9,6 +9,26 @@ class Sidenav extends Component {
     this.positions = [];
   }
 
+  state = {
+    positions: [],
+    navItems: [],
+    preProcessedNavItems: [],
+  };
+
+  componentDidUpdate() {
+    if (this.props.navItems && this.props.navItems !== this.state.navItems) {
+      this.positions = [];
+      let preProcessedNavItems = [];
+      this.preProcessNavItems(preProcessedNavItems);
+
+      this.setState({
+        navItems: this.props.navItems,
+        positions: this.positions,
+        preProcessedNavItems: [...preProcessedNavItems],
+      });
+    }
+  }
+
   dfs = (navItem, currentNavItemsIndex, tree, parent, parentName) => {
     if (navItem.childrenItems) {
       let navItemsChildren = [];
@@ -25,7 +45,7 @@ class Sidenav extends Component {
           parent: currentNavItemsIndex,
           name: navItemChild.name,
           link: !navItemChild.navItemsChildren ? navItemChild.link : null,
-          icon: navItemChild.icon
+          icon: navItemChild.icon,
         });
         this.dfs(
           navItemChild,
@@ -55,17 +75,13 @@ class Sidenav extends Component {
   };
 
   render() {
-    let preProcessedNavItems = [];
-    this.positions = [];
-    this.preProcessNavItems(preProcessedNavItems);
-
     return (
       <div>
         <Backdrop clicked={() => this.props.onClose()} show={this.props.open} />
         <SideDrawer
           open={this.props.open}
-          navItems={preProcessedNavItems}
-          positions={this.positions}
+          navItems={this.state.preProcessedNavItems}
+          positions={this.state.positions}
           clickedLink={() => this.props.onClose()}
         />
       </div>
