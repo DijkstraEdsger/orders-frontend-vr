@@ -19,6 +19,17 @@ class SideDrawer extends Component {
         positions: this.props.positions,
       });
     }
+
+    if (
+      this.props.open === false &&
+      this.state.positions &&
+      this.state.positions.length > 0 &&
+      this.state.positions[0] !== this.props.positions[0]
+    ) {
+      this.setState({
+        positions: this.props.positions,
+      });
+    }
   }
 
   slideForwardHandler = (parent, child) => {
@@ -41,7 +52,7 @@ class SideDrawer extends Component {
 
   render() {
     let preProcessedNavItems = this.state.navItems.map((navItems, index) => {
-      return (
+      return this.state.positions && this.state.positions.length > 0 ? (
         <NavItems posX={this.state.positions[navItems.posXIndex]} key={index}>
           {navItems.current ? (
             <BackArrow
@@ -73,7 +84,7 @@ class SideDrawer extends Component {
             );
           })}
         </NavItems>
-      );
+      ) : null;
     });
 
     let classesSideDrawer = [classes.SideDrawer, classes.Close];
