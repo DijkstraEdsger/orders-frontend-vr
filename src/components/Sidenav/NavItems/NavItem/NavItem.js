@@ -34,9 +34,11 @@ class NavItem extends Component {
           className={this.props.active ? classes.active : null}
           onClick={this.moveForwardHandler}
         >
-          <div>
-            {this.props.icon ? (
-              <i className={[classes.Icon, this.props.icon].join(" ")}></i>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            {this.props.icon && this.props.icon.class ? (
+              <i className={[classes.Icon, this.props.icon.class].join(" ")}>
+                {this.props.icon.content}
+              </i>
             ) : null}
             {this.props.children}
           </div>

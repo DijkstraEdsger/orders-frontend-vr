@@ -35,7 +35,10 @@ class Layout extends Component {
       { name: "Other", link: { to: "/" } },
       {
         name: "Cars",
-        icon: "fa fa-car",
+        icon: {
+          class: "fa fa-car",
+          content: "",
+        },
         childrenItems: [
           { name: "Audi", link: { to: "/" } },
           {
