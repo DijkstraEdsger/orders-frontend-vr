@@ -66,7 +66,7 @@ NavItem.propTypes = {
   clicked: PropTypes.func,
   linkOptions: PropTypes.object,
   clickedLink: PropTypes.func,
-  icon: PropTypes.string,
+  icon: PropTypes.object,
 };
 
 export default NavItem;
