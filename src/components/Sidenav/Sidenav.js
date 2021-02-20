@@ -3,7 +3,7 @@ import SideDrawer from "./SideDrawer/SideDrawer";
 import Backdrop from "./Backdrop/Backdrop";
 import PropTypes from "prop-types";
 
-class Navigation extends Component {
+class Sidenav extends Component {
   constructor(props) {
     super(props);
     this.positions = [];
@@ -73,9 +73,9 @@ class Navigation extends Component {
   }
 }
 
-Navigation.propTypes = {
+Sidenav.propTypes = {
   navItems: PropTypes.array,
   open: PropTypes.bool,
 };
 
-export default Navigation;
+export default Sidenav;
