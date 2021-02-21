@@ -93,9 +93,7 @@ class SideDrawer extends Component {
     }
     return (
       <div className={classesSideDrawer.join(" ")}>
-        <div className={classes.MenuHead}>
-          <b>Text Humberto Lazaro Martinez Morales</b>
-        </div>
+        {this.props.menuHead ? this.props.menuHead : null}
         {preProcessedNavItems}
       </div>
     );
@@ -107,6 +105,7 @@ SideDrawer.propTypes = {
   navItems: PropTypes.array,
   positions: PropTypes.array,
   clickedLink: PropTypes.func,
+  menuHead: PropTypes.object,
 };
 
 export default SideDrawer;

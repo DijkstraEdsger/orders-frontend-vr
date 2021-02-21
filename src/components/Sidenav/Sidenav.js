@@ -83,6 +83,7 @@ class Sidenav extends Component {
           navItems={this.state.preProcessedNavItems}
           positions={this.state.positions}
           clickedLink={() => this.props.onClose()}
+          menuHead={this.props.children}
         />
       </div>
     );
@@ -92,7 +93,8 @@ class Sidenav extends Component {
 Sidenav.propTypes = {
   navItems: PropTypes.array,
   open: PropTypes.bool,
-  mainHeaderText: PropTypes.string
+  mainHeaderText: PropTypes.string,
+  menuHead: PropTypes.object,
 };
 
 export default Sidenav;

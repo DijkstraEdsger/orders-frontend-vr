@@ -5,14 +5,14 @@ import Toolbar from "../Toolbar/Toolbar";
 class Layout extends Component {
   state = {
     openSidenav: false,
-    navItems: null
+    navItems: null,
   };
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        navItems: this.navItems()
-      })
+        navItems: this.navItems(),
+      });
     }, 5000);
   }
   navItems = () => {
@@ -41,7 +41,10 @@ class Layout extends Component {
           { name: "4", link: { to: "/" } },
         ],
       },
-      { name: "Other Humberto Lazaro Martinez Morales programador", link: { to: "/" } },
+      {
+        name: "Other Humberto Lazaro Martinez Morales programador",
+        link: { to: "/" },
+      },
       {
         name: "Cars Humberto Lazaro Martinez Morales programador",
         icon: {
@@ -101,8 +104,10 @@ class Layout extends Component {
           navItems={this.state.navItems}
           open={this.state.openSidenav}
           onClose={this.closeSidenavHandler}
-          mainHeaderText={"Main menu Humberto Lazaro Martinez Morales programador"}
-        />
+          mainHeaderText={
+            "Main menu Humberto Lazaro Martinez Morales programador"
+          }
+        ></Sidenav>
         <Toolbar clickedToggle={this.sidenavTogglerHandler} />
         {this.props.children}
         <button onClick={this.openSidenavHandler}>Open sidenav</button>
