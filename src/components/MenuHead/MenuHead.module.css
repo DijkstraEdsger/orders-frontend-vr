@@ -1,0 +1,6 @@
+.MenuHead {
+  height: 150px;
+  background-color: mediumseagreen;
+  display: flex;
+  flex-direction: column;
+}

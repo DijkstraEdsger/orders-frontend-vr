@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Sidenav from "../Sidenav/Sidenav";
 import Toolbar from "../Toolbar/Toolbar";
+import MenuHead from "../MenuHead/MenuHead";
 
 class Layout extends Component {
   state = {
@@ -107,7 +108,9 @@ class Layout extends Component {
           mainHeaderText={
             "Main menu Humberto Lazaro Martinez Morales programador"
           }
-        ></Sidenav>
+        >
+          <MenuHead />
+        </Sidenav>
         <Toolbar clickedToggle={this.sidenavTogglerHandler} />
         {this.props.children}
         <button onClick={this.openSidenavHandler}>Open sidenav</button>
