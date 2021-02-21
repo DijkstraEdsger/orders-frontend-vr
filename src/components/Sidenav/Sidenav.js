@@ -69,7 +69,7 @@ class Sidenav extends Component {
 
   preProcessNavItems = (tree) => {
     let navItem = {};
-    navItem.name = "Main";
+    navItem.name = this.props.mainHeaderText;
     navItem.childrenItems = this.props.navItems;
     this.dfs(navItem, 0, tree, -1, "");
   };
@@ -92,6 +92,7 @@ class Sidenav extends Component {
 Sidenav.propTypes = {
   navItems: PropTypes.array,
   open: PropTypes.bool,
+  mainHeaderText: PropTypes.string
 };
 
 export default Sidenav;

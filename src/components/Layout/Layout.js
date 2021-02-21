@@ -101,6 +101,7 @@ class Layout extends Component {
           navItems={this.state.navItems}
           open={this.state.openSidenav}
           onClose={this.closeSidenavHandler}
+          mainHeaderText={"Main menu"}
         />
         <Toolbar clickedToggle={this.sidenavTogglerHandler} />
         {this.props.children}
