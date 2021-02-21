@@ -41,6 +41,13 @@
   margin-right: 10px;
 }
 
+.TextItemBackArrow {
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (min-width: 500px) {
   .BackArrow a {
     padding: 13px 20px 13px 36px;

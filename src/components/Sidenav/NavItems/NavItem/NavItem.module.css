@@ -16,6 +16,10 @@
   justify-content: space-between;
   height: 51px;
   align-items: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .NavItem i {
@@ -53,6 +57,13 @@
 
 .Icon {
   margin-right: 10px;
+}
+
+.TextItem {
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (min-width: 500px) {

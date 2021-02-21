@@ -18,7 +18,7 @@ class Layout extends Component {
   navItems = () => {
     return [
       {
-        name: "Versions",
+        name: "Versions Humberto Lazaro Martinez Morales programador",
         childrenItems: [
           {
             name: "1",
@@ -41,9 +41,9 @@ class Layout extends Component {
           { name: "4", link: { to: "/" } },
         ],
       },
-      { name: "Other", link: { to: "/" } },
+      { name: "Other Humberto Lazaro Martinez Morales programador", link: { to: "/" } },
       {
-        name: "Cars",
+        name: "Cars Humberto Lazaro Martinez Morales programador",
         icon: {
           class: "fa fa-car",
           content: "",
@@ -101,7 +101,7 @@ class Layout extends Component {
           navItems={this.state.navItems}
           open={this.state.openSidenav}
           onClose={this.closeSidenavHandler}
-          mainHeaderText={"Main menu"}
+          mainHeaderText={"Main menu Humberto Lazaro Martinez Morales programador"}
         />
         <Toolbar clickedToggle={this.sidenavTogglerHandler} />
         {this.props.children}

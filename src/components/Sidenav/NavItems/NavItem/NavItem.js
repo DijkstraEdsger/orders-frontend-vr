@@ -24,7 +24,7 @@ class NavItem extends Component {
         {...this.props.linkOptions}
         onClick={this.onClickedLinkHandler}
       >
-        <div>{this.props.children}</div>
+        <div className={classes.TextItem}>{this.props.children}</div>
       </Link>
     );
 
@@ -34,7 +34,7 @@ class NavItem extends Component {
           className={this.props.active ? classes.active : null}
           onClick={this.moveForwardHandler}
         >
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div className={classes.TextItem}>
             {this.props.icon && this.props.icon.class ? (
               <i className={[classes.Icon, this.props.icon.class].join(" ")}>
                 {this.props.icon.content}

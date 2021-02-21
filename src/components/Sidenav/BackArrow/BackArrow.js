@@ -21,7 +21,7 @@ class BackArrow extends Component {
         <div>
           <i className={[classes.LeftArrow, "fa fa-arrow-left"].join(" ")}></i>
         </div>
-        <div>{this.props.children}</div>
+        <div className={classes.TextItemBackArrow}>{this.props.children}</div>
       </a>
     );
     return <li className={classes.BackArrow}>{item}</li>;

@@ -92,7 +92,12 @@ class SideDrawer extends Component {
       classesSideDrawer = [classes.SideDrawer, classes.Open];
     }
     return (
-      <div className={classesSideDrawer.join(" ")}>{preProcessedNavItems}</div>
+      <div className={classesSideDrawer.join(" ")}>
+        <div className={classes.MenuHead}>
+          <b>Text Humberto Lazaro Martinez Morales</b>
+        </div>
+        {preProcessedNavItems}
+      </div>
     );
   }
 }
