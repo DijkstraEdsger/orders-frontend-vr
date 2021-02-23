@@ -109,6 +109,7 @@ class Layout extends Component {
             "Main menu Humberto Lazaro Martinez Morales programador"
           }
           side="right"
+          zIndex={800}
         >
           <MenuHead />
         </Sidenav>

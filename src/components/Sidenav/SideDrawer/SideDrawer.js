@@ -114,7 +114,10 @@ class SideDrawer extends Component {
       }
     }
     return (
-      <div className={classesSideDrawer.join(" ")}>
+      <div
+        className={classesSideDrawer.join(" ")}
+        style={{ zIndex: this.props.zIndex ? this.props.zIndex : 500 }}
+      >
         {this.props.menuHead ? this.props.menuHead : null}
         {preProcessedNavItems}
       </div>
@@ -129,6 +132,7 @@ SideDrawer.propTypes = {
   clickedLink: PropTypes.func,
   menuHead: PropTypes.object,
   side: PropTypes.string,
+  zIndex: PropTypes.number,
 };
 
 export default SideDrawer;

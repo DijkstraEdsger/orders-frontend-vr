@@ -8,13 +8,18 @@ const backDrop = (props) => {
     classesBackdrop = [classes.Backdrop, classes.Visible];
   }
   return (
-    <div className={classesBackdrop.join(" ")} onClick={props.clicked}></div>
+    <div
+      className={classesBackdrop.join(" ")}
+      onClick={props.clicked}
+      style={{ zIndex: props.zIndex ? props.zIndex : 500 }}
+    ></div>
   );
 };
 
 backDrop.propTypes = {
   clicked: PropTypes.func,
   show: PropTypes.bool,
+  zIndex: PropTypes.number
 };
 
 export default backDrop;

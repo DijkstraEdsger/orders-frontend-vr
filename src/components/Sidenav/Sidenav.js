@@ -77,7 +77,11 @@ class Sidenav extends Component {
   render() {
     return (
       <div>
-        <Backdrop clicked={() => this.props.onClose()} show={this.props.open} />
+        <Backdrop
+          clicked={() => this.props.onClose()}
+          show={this.props.open}
+          zIndex={this.props.zIndex}
+        />
         <SideDrawer
           open={this.props.open}
           navItems={this.state.preProcessedNavItems}
@@ -85,6 +89,7 @@ class Sidenav extends Component {
           clickedLink={() => this.props.onClose()}
           menuHead={this.props.children}
           side={this.props.side}
+          zIndex={this.props.zIndex}
         />
       </div>
     );
@@ -97,6 +102,7 @@ Sidenav.propTypes = {
   mainHeaderText: PropTypes.string,
   menuHead: PropTypes.object,
   side: PropTypes.string,
+  zIndex: PropTypes.number,
 };
 
 export default Sidenav;
