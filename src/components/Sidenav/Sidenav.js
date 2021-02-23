@@ -84,6 +84,7 @@ class Sidenav extends Component {
           positions={this.state.positions}
           clickedLink={() => this.props.onClose()}
           menuHead={this.props.children}
+          side={this.props.side}
         />
       </div>
     );
@@ -95,6 +96,7 @@ Sidenav.propTypes = {
   open: PropTypes.bool,
   mainHeaderText: PropTypes.string,
   menuHead: PropTypes.object,
+  side: PropTypes.string,
 };
 
 export default Sidenav;

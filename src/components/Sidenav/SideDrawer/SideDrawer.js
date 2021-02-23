@@ -87,9 +87,31 @@ class SideDrawer extends Component {
       ) : null;
     });
 
-    let classesSideDrawer = [classes.SideDrawer, classes.Close];
+    let classesSideDrawer = [
+      classes.SideDrawer,
+      classes.SideDrawerLeft,
+      classes.CloseLeft,
+    ];
+    if (this.props.side === "right") {
+      classesSideDrawer = [
+        classes.SideDrawer,
+        classes.SideDrawerRight,
+        classes.CloseRight,
+      ];
+    }
     if (this.props.open) {
-      classesSideDrawer = [classes.SideDrawer, classes.Open];
+      classesSideDrawer = [
+        classes.SideDrawer,
+        classes.SideDrawerLeft,
+        classes.Open,
+      ];
+      if (this.props.side === "right") {
+        classesSideDrawer = [
+          classes.SideDrawer,
+          classes.SideDrawerRight,
+          classes.Open,
+        ];
+      }
     }
     return (
       <div className={classesSideDrawer.join(" ")}>
@@ -106,6 +128,7 @@ SideDrawer.propTypes = {
   positions: PropTypes.array,
   clickedLink: PropTypes.func,
   menuHead: PropTypes.object,
+  side: PropTypes.string,
 };
 
 export default SideDrawer;
