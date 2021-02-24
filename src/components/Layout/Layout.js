@@ -116,6 +116,7 @@ class Layout extends Component {
         <Toolbar clickedToggle={this.sidenavTogglerHandler} />
         {this.props.children}
         <button onClick={this.openSidenavHandler}>Open sidenav</button>
+        <img src="/img/rightArrow.png" style={{ width: '16px' }} />
       </div>
     );
   }
