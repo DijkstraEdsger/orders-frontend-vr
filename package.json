@@ -13,6 +13,7 @@
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
+    "react-sidenav-menu": "file:../../npm_packages/npm_packages_react/react-sidenav-menu",
     "redux": "^4.0.5",
     "web-vitals": "^1.1.0"
   },

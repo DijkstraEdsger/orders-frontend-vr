@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Sidenav from "../Sidenav/Sidenav";
 import Toolbar from "../Toolbar/Toolbar";
 import MenuHead from "../MenuHead/MenuHead";
+import DummyComponent from 'react-sidenav-menu'
 
 class Layout extends Component {
   state = {
@@ -117,6 +118,7 @@ class Layout extends Component {
         {this.props.children}
         <button onClick={this.openSidenavHandler}>Open sidenav</button>
         <img src="/img/rightArrow.png" style={{ width: '16px' }} />
+        <DummyComponent />
       </div>
     );
   }
