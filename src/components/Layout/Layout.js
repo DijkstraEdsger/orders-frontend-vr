@@ -44,7 +44,7 @@ class Layout extends Component {
         ],
       },
       {
-        name: "Other Humberto Lazaro Martinez Morales programador",
+        name: "Other Humberto Lazaro Martinez Morales programmer",
         link: { to: "/" },
       },
       {
