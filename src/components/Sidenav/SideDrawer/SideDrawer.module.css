@@ -1,0 +1,35 @@
+.SideDrawer {
+  width: 80vw;
+  background-color: white;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  transition: transform 0.3s ease-out;
+  overflow-x: hidden;
+}
+
+.SideDrawerLeft {
+  left: 0;
+}
+
+.Open {
+  transform: translateX(0);
+}
+
+.CloseLeft {
+  transform: translateX(-100vw);
+}
+
+.SideDrawerRight {
+  right: 0;
+}
+
+.CloseRight {
+  transform: translateX(100vw);
+}
+
+@media (min-width: 500px) {
+  .SideDrawer {
+    width: 365px;
+  }
+}

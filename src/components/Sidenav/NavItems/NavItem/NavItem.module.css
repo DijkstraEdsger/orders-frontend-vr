@@ -1,0 +1,73 @@
+.NavItem {
+  box-sizing: border-box;
+  width: 100%;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+.NavItem a {
+  text-decoration: none;
+  box-sizing: border-box;
+  padding: 15px 20px 15px 20px;
+  font-size: 16px;
+  color: #111;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 51px;
+  align-items: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.NavItem i {
+  color: #879596;
+}
+
+.NavItem a.active {
+  background-color: #ccc;
+}
+
+.NavItem:hover {
+  background-color: #eaeded;
+}
+
+.NavItem:hover i {
+  color: #111;
+}
+
+.Children {
+  position: fixed;
+  top: 0;
+  transform: translateX(70vw);
+  width: 80vw;
+}
+
+.RightArrow {
+  font-size: 16px;
+  color: #111;
+}
+
+.LeftArrow {
+  font-size: 16px;
+  color: #111;
+}
+
+.Icon {
+  margin-right: 10px;
+}
+
+.TextItem {
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 500px) {
+  .NavItem a {
+    padding: 13px 20px 13px 36px;
+  }
+}
