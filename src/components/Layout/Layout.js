@@ -48,7 +48,7 @@ class Layout extends Component {
         link: { to: "/" },
       },
       {
-        name: "Cars Humberto Lazaro Martinez Morales programmer",
+        name: "Cars Humberto Lazaro Martinez Morales programmer tyh",
         icon: {
           class: "fa fa-car",
           content: "",
