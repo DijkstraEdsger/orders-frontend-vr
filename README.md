@@ -5,7 +5,7 @@
 * [Diagrams](#diagrams)
     * [High Level Diagram](#high-level-diagram)
     * [Requirements](#requirements)
-# Introduction <a name="makerdao-mips"></a>
+# Introduction <a name="introduction"></a>
 This project (makerdao-mips) is a MIPs Tracker for MakerDAO Improvement Proposals. 
 
 ## Dependencies <a name="dependencies"></a>
