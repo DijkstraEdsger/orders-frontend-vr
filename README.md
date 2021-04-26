@@ -1,3 +1,4 @@
+# Table of contents
 * [makerdao-mips](#makerdao-mips)
 * [Dependencies](#dependencies)
 * [Requirements](#requirements)
