@@ -4,6 +4,10 @@
     * [Requirements](#requirements)
 * [Diagrams](#diagrams)
     * [High Level Diagram](#high-level-diagram)
+* [Command to parse MakerDAO mips repository manually](#command-to-parse-makerdao)
+* [Environment vars .env file](#environment-vars)
+* [Creating a personal access token (GIT_ACCESS_API_TOKEN)](#creating-personal-access-token)
+    * [Dependencies](#dependencies)
     * [Requirements](#requirements)
 # Introduction <a name="introduction"></a>
 This project (makerdao-mips) is a MIPs Tracker for MakerDAO Improvement Proposals. 
@@ -20,12 +24,12 @@ Node version 14.x.x LTS or above
 ![MakerDAO_HLD_1](https://github.com/DSpotDevelopers/makerdao-mips/blob/develop/docs/img/MakerDAO_HLD_1.png)
 
 
-## Command to parse MakerDAO mips repository manually
+## Command to parse MakerDAO mips repository manually <a name="command-to-parse-makerdao"></a>
 ```bash
 $ npx nestjs-command parse:mips
 ```
 
-## Environment vars .env file
+## Environment vars .env file <a name="environment-vars"></a>
 ```.env
 MONGODB_URI=mongodb://localhost:27017/dao
 PORT=3000
@@ -43,7 +47,7 @@ GITHUB_REPOSITORY_OWNER=makerdao
 ```
 
 ---
-## Creating a personal access token (GIT_ACCESS_API_TOKEN)
+## Creating a personal access token (GIT_ACCESS_API_TOKEN) <a name="creating-personal-access-token"></a>
 
 You should create a personal access token to use in place of a password with the command line or with the API. Personal access tokens (PATs) are an alternative to using passwords for authentication to when using the [GitHub API](/rest/overview/other-authentication-methods#via-oauth-and-personal-access-tokens) or the [command line](#using-a-token-on-the-command-line). 
 
