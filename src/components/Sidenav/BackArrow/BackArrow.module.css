@@ -1,0 +1,55 @@
+.BackArrow {
+  box-sizing: border-box;
+  width: 100%;
+  padding-bottom: 2px;
+  border-bottom: 5px solid #ccc;
+  cursor: pointer;
+}
+
+.BackArrow a {
+  text-decoration: none;
+  box-sizing: border-box;
+  padding: 15px 20px 15px 20px;
+  font-size: 16px;
+  color: #111;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  height: 51px;
+  align-items: center;
+}
+
+.BackArrow:hover {
+  background-color: #eaeded;
+}
+
+.BackArrow a.active {
+  background-color: #ccc;
+}
+
+.BackArrow i {
+  color: #879596;
+}
+
+.BackArrow:hover i {
+  color: #111;
+}
+
+.LeftArrow {
+  font-size: 16px;
+  color: #111;
+  margin-right: 10px;
+}
+
+.TextItemBackArrow {
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 500px) {
+  .BackArrow a {
+    padding: 13px 20px 13px 36px;
+  }
+}

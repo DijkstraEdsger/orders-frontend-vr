@@ -1,0 +1,12 @@
+.MenuHead {
+  height: 150px;
+  background-color: mediumseagreen;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.MenuHead i {
+  font-size: 50px;
+}
