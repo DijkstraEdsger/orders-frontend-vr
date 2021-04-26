@@ -1,10 +1,13 @@
-# makerdao-mips
+* [makerdao-mips](#makerdao-mips)
+* [Dependencies](#dependencies)
+* [Requirements](#requirements)
+# makerdao-mips <a name="makerdao-mips"></a>
 This project is a MIPs Tracker for MakerDAO Improvement Proposals. 
 
-## Dependencies
+## Dependencies <a name="dependencies"></a>
 Requires git to be installed and that it can be called using the command git.
 
-## Requirements
+## Requirements <a name="requirements"></a>
 Node version 14.x.x LTS or above
 
 # Diagrams
