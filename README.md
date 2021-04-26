@@ -1,71 +1,155 @@
-1. [Getting Started with Create React App](#gettingStarted)
-# Getting Started with Create React App <a name="gettingStarted"></a>
+# makerdao-mips
+This project is a MIPs Tracker for MakerDAO Improvement Proposals. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Dependencies
+Requires git to be installed and that it can be called using the command git.
 
-## Available Scripts
+## Requirements
+Node version 14.x.x LTS or above
 
-In the project directory, you can run:
+# Diagrams
+## High Level Diagram
 
-### `npm start`
+![MakerDAO_HLD_1](https://github.com/DSpotDevelopers/makerdao-mips/blob/develop/docs/img/MakerDAO_HLD_1.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Command to parse MakerDAO mips repository manually
+```bash
+$ npx nestjs-command parse:mips
+```
 
-### `npm test`
+## Environment vars .env file
+```.env
+MONGODB_URI=mongodb://localhost:27017/dao
+PORT=3000
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+FOLDER_REPOSITORY_NAME=mips_repository
+REPO_PATH=https://github.com/makerdao/mips.git
+FOLDER_PATTERN='MIP*'
 
-### `npm run build`
+WEBHOOKS_SECRET_TOKEN=AANBM78GGfffGGGKOIh
+GIT_ACCESS_API_TOKEN=AANBM78GGfffGGGKOI
+GITHUB_URL_ENDPOINT=https://api.github.com/graphql
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+GITHUB_REPOSITORY=mips
+GITHUB_REPOSITORY_OWNER=makerdao
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
+## Creating a personal access token (GIT_ACCESS_API_TOKEN)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You should create a personal access token to use in place of a password with the command line or with the API. Personal access tokens (PATs) are an alternative to using passwords for authentication to when using the [GitHub API](/rest/overview/other-authentication-methods#via-oauth-and-personal-access-tokens) or the [command line](#using-a-token-on-the-command-line). 
 
-### `npm run eject`
+### Creating a token
+1. In the upper-right corner of any page, click your profile photo, then click Settings.
+   
+   ![image](https://docs.github.com/assets/images/help/settings/userbar-account-settings.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. In the left sidebar, click **Developer settings.**
+   
+   ![image](https://docs.github.com/assets/images/help/settings/developer-settings.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. In the left sidebar, click **Personal access tokens.**
+   
+   ![image](https://docs.github.com/assets/images/help/settings/personal_access_tokens_tab.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. Click **Generate new token**.
+   
+   ![image](https://docs.github.com/assets/images/help/settings/generate_new_token.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+5. Give your token a descriptive name.
+   
+   ![Token description field](https://docs.github.com/assets/images/help/settings/token_description.png)
 
-## Learn More
+6. Select the scopes, or permissions, you'd like to grant this token. To use your token to access repositories from the command line, select **repo**.
+   
+   ![Selecting token scopes](https://docs.github.com/assets/images/help/settings/token_scopes.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+7. Click **Generate token**.
+   
+   ![Generate token button](https://docs.github.com/assets/images/help/settings/generate_token.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+8. Click to copy the token to your clipboard. For security reasons, after you navigate off the page, you will not be able to see the token again.
+   
+   ![Newly created token](https://docs.github.com/assets/images/help/settings/personal_access_tokens.png)
 
-### Code Splitting
+   ![Newly created token](https://docs.github.com/assets/images/help/settings/personal_access_tokens_ghe.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   **Warning:** Treat your tokens like passwords and keep them secret. When working with the API, use tokens as environment variables instead of hardcoding them into your programs.
 
-### Analyzing the Bundle Size
+### Further reading
+- [Github documentation](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)
+  
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Webhooks documentation (WEBHOOKS_SECRET_TOKEN equal to secret)
+Webhooks allow you to build or set up integrations, such as GitHub Apps or OAuth Apps, which subscribe to certain events on GitHub.com. When one of those events is triggered, we'll send a HTTP POST payload to the webhook's configured URL. Webhooks can be used to update an external issue tracker, trigger CI builds, update a backup mirror, or even deploy to your production server. You're only limited by your imagination.
 
-### Making a Progressive Web App
+![image](https://github.com/DSpotDevelopers/makerdao-mips/blob/develop/docs/img/Configure-webhook.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Further reading
+- [Webhooks-documentation](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhooks)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Api URL. Documented with Swagger. 
+- [API URL](http://159.203.86.45:3000/doc/)
 
-### Deployment
+### Findall endpoint
+Function that lists all mips.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### findall endpoint, search parameter
+In the search parameter, specify a string of words that the text operator parses and uses to query the text index. The text operator treats most punctuation in the string as delimiters, except a hyphen-minus (-) that negates term or an escaped double quotes \" that specifies a phrase.
+https://docs.mongodb.com/manual/reference/operator/query/text/#search-field
 
-### `npm run build` fails to minify
+##### Examples of search (Ignore parenthesis)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Specifies a phrase (\"General MIP Templat\")
+- Negate term (-MIP)
+
+#### findall endpoint, filter parameter
+Filter field with various filter patterns. (contains, notcontains, equals, notequals)
+
+##### Examples
+```json
+{
+  "filter": {
+    "contains": [
+      {
+        "field": "title",
+        "value": "Proposal"
+      }
+    ],
+    "notcontains": [
+      {
+        "field": "title",
+        "value": "subproposal"
+      }
+    ],
+    "equals": [
+      {
+        "field": "mip",
+        "value": -1
+      }
+    ],
+    "notequals": [
+      {
+        "field": "mip",
+        "value": -1
+      }
+    ]
+  }
+}
+```
+
+#### findall endpoint, sort parameter
+- Order 'mip -title', means: order parameter (mip ASC and title DESC)
+
+#### findall endpoint, limit parameter
+- Limit per page, default value 10
+
+#### findall endpoint, page parameter
+- Page, default value equal to zero
+  
+---
+
