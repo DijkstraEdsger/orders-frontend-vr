@@ -1,8 +1,11 @@
 # Table of contents
-* [makerdao-mips](#makerdao-mips)
-* [Dependencies](#dependencies)
-* [Requirements](#requirements)
-# makerdao-mips <a name="makerdao-mips"></a>
+* [Introduction](#introduction)
+    * [Dependencies](#dependencies)
+    * [Requirements](#requirements)
+* [Diagrams](#diagrams)
+    * [High Level Diagram](#high-level-diagram)
+    * [Requirements](#requirements)
+# Introduction <a name="makerdao-mips"></a>
 This project is a MIPs Tracker for MakerDAO Improvement Proposals. 
 
 ## Dependencies <a name="dependencies"></a>
@@ -11,8 +14,8 @@ Requires git to be installed and that it can be called using the command git.
 ## Requirements <a name="requirements"></a>
 Node version 14.x.x LTS or above
 
-# Diagrams
-## High Level Diagram
+# Diagrams <a name="diagrams"></a>
+## High Level Diagram <a name="high-level-diagram"></a>
 
 ![MakerDAO_HLD_1](https://github.com/DSpotDevelopers/makerdao-mips/blob/develop/docs/img/MakerDAO_HLD_1.png)
 
