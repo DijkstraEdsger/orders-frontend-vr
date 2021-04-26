@@ -6,7 +6,7 @@
     * [High Level Diagram](#high-level-diagram)
     * [Requirements](#requirements)
 # Introduction <a name="makerdao-mips"></a>
-This project is a MIPs Tracker for MakerDAO Improvement Proposals. 
+This project (makerdao-mips) is a MIPs Tracker for MakerDAO Improvement Proposals. 
 
 ## Dependencies <a name="dependencies"></a>
 Requires git to be installed and that it can be called using the command git.
