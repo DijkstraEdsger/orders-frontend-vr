@@ -205,5 +205,5 @@ It is located at _frontend/src/assets/data/menu.json_
 }
 ```
 #### Result in frontend
-![image]()
-![image]()
+![image](https://github.com/DSpotDevelopers/makerdao-mips/blob/readme-table-of-content/docs/img/menu001.png)
+![image](https://github.com/DSpotDevelopers/makerdao-mips/blob/readme-table-of-content/docs/img/menu002.png)
