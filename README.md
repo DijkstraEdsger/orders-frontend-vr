@@ -203,3 +203,5 @@ Menu support second level menu items and can link to any valid URL.
   ]    
 }
 ```
+#### Result
+    ![image](https://github.com/DijkstraEdsger/orders-frontend-vr/blob/master/menu001.png)
