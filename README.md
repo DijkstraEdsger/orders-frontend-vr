@@ -178,7 +178,7 @@ Filter field with various filter patterns. (contains, notcontains, equals, noteq
 ## Menu <a name="menu"></a>
 Menu appears horizontally along of top page, and is formed through a config JSON file existing in MIPs repository. 
 Menu support second level menu items and can link to any valid URL.
-It is located at frontend/src/assets/data/menu.json
+It is located at _frontend/src/assets/data/menu.json_
 
 ### Creating a menu <a name="creating-a-menu"></a>
 #### Example:
